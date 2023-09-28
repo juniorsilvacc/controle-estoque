@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+}
+
+:root {
+  --second-bg-color: #222E3C;
+  --second-text-color: #ADB5BD;
+}
+
+.bg-form {
+  background: #FFFFFF;
+  padding: 30px;
+  box-shadow: 0 0 2rem 0 rgba(33,37,41,.1);
+}
+
+.bg-title-form h1 {
+  font-size: 21px;
+  color: #000;
+  font-weight: 500;
+}
+
+.form-control, .form-select {
+  background-color: #F0F0F5 !important;
+  border: none !important;
+}
+
+form .form-select option {
+  font-size: 14px;
+}
+
+.form-control, .form-select:focus {
+  box-shadow:none !important;
+}

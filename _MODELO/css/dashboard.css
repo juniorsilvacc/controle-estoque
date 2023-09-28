@@ -1,0 +1,129 @@
+.primary-text {
+  color: #3B7DDD;
+}
+
+.secondary-bg {
+  background-color: #D3E2F7;
+}
+
+.second-text {
+  color:  #ECECEC;
+}
+
+.navbar.navbar-expand-lg {
+  background-color: #FFFFFF !important;
+  margin-bottom: 30px;
+  box-shadow: 0 0 2rem 0 rgba(33,37,41,.1);
+}
+
+.rounded-full {
+  border-radius: 100%;
+}
+
+.bg-color {
+  background-color: var(--second-bg-color);
+}
+
+.bg-color .text-side-bar{
+  color: var(--second-text-color);
+  border-bottom: 1px solid var(--second-text-color);
+}
+
+.bg-color a{
+  color: var(--second-text-color);
+  font-weight: 500;
+}
+
+.list-group.list-group-flush a{
+  font-size: 14px;
+}
+
+.list-group.list-group-flush a:hover{
+  color: #FFFFFF;
+}
+
+#wrapper {
+  overflow-x: hidden;
+  background-color: #F5F7FB;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin 0.25s ease-out;
+  -moz-transition: margin 0.25s ease-out;
+  -o-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+#menu-toggle {
+  cursor: pointer;
+  color: #495057;
+}
+
+.list-group-item {
+  border: none;
+  padding: 20px 30px;
+  margin: 5px 0 5px 0;
+  border: none !important;
+}
+
+.list-group-item.active {
+  background-color: transparent;
+  color: var(--main-text-color);
+  font-weight: bold;
+  border: none;
+}
+
+.bg-title-list {
+  background-color: var(--second-bg-color);
+  border-radius: 4px;
+  padding: 10px 0 20px 0;
+}
+
+.bg-title-list h1 {
+  color: #FFFFFF;
+  font-size: 21px;
+  font-weight: 500;
+}
+
+a.page-link, span.page-link {
+  color: #000;
+}
+
+a.dropdown-item {
+  color: #000;
+  font-weight: 400;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
