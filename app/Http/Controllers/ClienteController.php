@@ -2,11 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ClienteService;
+use Illuminate\Http\Request;
+
 class ClienteController extends Controller
 {
-    public function listar()
+    private $service;
+
+    public function __construct(
+        ClienteService $service
+    ) {
+        $this->service = $service;
+    }
+
+    public function listar(Request $request)
     {
-        return view('clientes.lista-clientes');
+        $clientes = $this->service->getAll(
+            filter: $request->get('filter', '')
+        );
+
+        return view('clientes.lista-clientes', compact('clientes'));
     }
 
     public function cadastrar()
