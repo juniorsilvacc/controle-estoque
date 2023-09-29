@@ -20,4 +20,11 @@ class ClienteService
 
         return $clientes;
     }
+
+    public function create(array $data)
+    {
+        $cliente = $this->repository->create($data);
+
+        return $cliente;
+    }
 }

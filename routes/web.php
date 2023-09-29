@@ -4,7 +4,11 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
+// Home
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 
-Route::get('/lista-clientes', [ClienteController::class, 'listar'])->name('clientes.lista-clientes');
-Route::get('/cadastrar-clientes', [ClienteController::class, 'cadastrar'])->name('clientes.cadastrar-clientes');
+// Clientes
+Route::get('/lista-clientes', [ClienteController::class, 'index'])->name('clientes.lista-clientes');
+
+Route::post('/cadastrar-clientes', [ClienteController::class, 'createAction'])->name('clientes.createAction');
+Route::get('/cadastrar-clientes', [ClienteController::class, 'create'])->name('clientes.cadastrar-clientes');

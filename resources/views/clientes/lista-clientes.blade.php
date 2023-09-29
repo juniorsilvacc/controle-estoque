@@ -10,7 +10,7 @@
             </div>
 
             <div class="col d-flex m-auto justify-content-end bg-button-pag">
-                <a href=" {{ url('/cadastrar-clientes') }} " class="btn btn-success me-2" type="button"><i
+                <a href=" {{ route('clientes.cadastrar-clientes') }} " class="btn btn-success me-2" type="button"><i
                         class="fas fa-plus-circle me-2"></i>Cadastrar</a>
             </div>
         </div>
@@ -18,6 +18,9 @@
 
     <div class="container-fluid px-4">
         <div class="row g-3 my-2">
+
+            @include('includes.message')
+
             <table class="table table-striped table-hover w-100">
                 <thead>
                     <tr>

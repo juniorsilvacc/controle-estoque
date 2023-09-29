@@ -21,4 +21,11 @@ class ClienteRepository implements ClienteRepositoryInterface
 
         return $clientes;
     }
+
+    public function create(array $data)
+    {
+        $cliente = $this->model->create($data);
+
+        return $cliente;
+    }
 }
