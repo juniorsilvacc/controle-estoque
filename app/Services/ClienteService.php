@@ -55,4 +55,9 @@ class ClienteService
     {
         return $this->repository->update($dto);
     }
+
+    public function delete(string $id)
+    {
+        $this->repository->delete($id);
+    }
 }

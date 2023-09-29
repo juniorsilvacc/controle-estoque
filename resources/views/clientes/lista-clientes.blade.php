@@ -39,7 +39,9 @@
                             <td>{{ $cliente->email }}</td>
                             <td>
                                 <a href=" {{ route('clientes.edit', $cliente->id) }} " class="btn btn-warning col-md-3">Editar</a>
-                                <a href=" {{ route('clientes.edit', $cliente->id) }} " class="btn btn-danger col-md-3">Excluir</a>
+                                {{-- <a href=" {{ route('clientes.deleteAction', $cliente->id) }} " class="btn btn-danger col-md-3">Excluir</a> --}}
+                                @include('clientes.partials.delete-modal')
+
                             </td>
                         </tr>
                     @endforeach

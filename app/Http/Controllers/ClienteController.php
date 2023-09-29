@@ -50,7 +50,7 @@ class ClienteController extends Controller
         return view('clientes.edit', compact('cliente'));
     }
 
-    public function editAction(UpdateCliente $request, Cliente $cliente, string $id)
+    public function editAction(UpdateCliente $request, Cliente $cliente)
     {
         $cliente = $this->service->update(
             UpdateClienteDTO::makeFromRequest($request),
@@ -63,5 +63,14 @@ class ClienteController extends Controller
         return redirect()
                 ->route('clientes.lista-clientes')
                 ->with('message', 'Atualizado com Sucesso.');
+    }
+
+    public function deleteAction(string $id)
+    {
+        $this->service->delete($id);
+
+        return redirect()
+                ->route('clientes.lista-clientes')
+                ->with('message', 'Deletado com Sucesso.');
     }
 }

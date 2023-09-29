@@ -15,3 +15,5 @@ Route::put('/clientes/{id}', [ClienteController::class, 'editAction'])->name('cl
 
 Route::get('/cadastrar-clientes', [ClienteController::class, 'create'])->name('clientes.cadastrar-clientes');
 Route::post('/cadastrar-clientes', [ClienteController::class, 'createAction'])->name('clientes.createAction');
+
+Route::get('clientes/{id}/delete', [ClienteController::class, 'deleteAction'])->name('clientes.deleteAction');

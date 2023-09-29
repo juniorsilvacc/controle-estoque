@@ -76,4 +76,9 @@ class ClienteRepository implements ClienteRepositoryInterface
 
         return (object) $cliente->toArray();
     }
+
+    public function delete(string $id)
+    {
+        $this->model->findOrFail($id)->delete();
+    }
 }

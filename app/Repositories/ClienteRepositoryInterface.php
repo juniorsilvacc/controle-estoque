@@ -18,4 +18,6 @@ interface ClienteRepositoryInterface
     public function create(CreateClienteDTO $dto);
 
     public function update(UpdateClienteDTO $dto);
+
+    public function delete(string $id);
 }
