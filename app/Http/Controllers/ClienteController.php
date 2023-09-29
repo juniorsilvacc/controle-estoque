@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCliente;
+use App\DTO\CreateClienteDTO;
+use App\DTO\UpdateClienteDTO;
+use App\Http\Requests\CreateCliente;
+use App\Http\Requests\UpdateCliente;
+use App\Models\Cliente;
 use App\Services\ClienteService;
 use Illuminate\Http\Request;
 
@@ -28,12 +32,36 @@ class ClienteController extends Controller
         return view('clientes.cadastrar-clientes');
     }
 
-    public function createAction(StoreCliente $request)
+    public function createAction(CreateCliente $request)
     {
-        $this->service->create($request->validated());
+        $this->service->create(CreateClienteDTO::makeFromRequest($request));
 
         return redirect()
             ->route('clientes.lista-clientes')
-            ->with('message', 'Cliente criado com sucesso');
+            ->with('message', 'Cadastrado com Sucesso.');
+    }
+
+    public function edit(string $id)
+    {
+        if (!$cliente = $this->service->findById($id)) {
+            return back();
+        }
+
+        return view('clientes.edit', compact('cliente'));
+    }
+
+    public function editAction(UpdateCliente $request, Cliente $cliente, string $id)
+    {
+        $cliente = $this->service->update(
+            UpdateClienteDTO::makeFromRequest($request),
+        );
+
+        if (!$cliente) {
+            return back();
+        }
+
+        return redirect()
+                ->route('clientes.lista-clientes')
+                ->with('message', 'Atualizado com Sucesso.');
     }
 }

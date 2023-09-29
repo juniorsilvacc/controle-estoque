@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\DTO\CreateClienteDTO;
+use App\DTO\UpdateClienteDTO;
 use App\Repositories\ClienteRepositoryInterface;
 
 class ClienteService
@@ -14,6 +16,27 @@ class ClienteService
         $this->repository = $repository;
     }
 
+    public function findByName(string $nome)
+    {
+        $cliente = $this->repository->findByName($nome);
+
+        return $cliente;
+    }
+
+    public function findByEmail(string $email)
+    {
+        $cliente = $this->repository->findByEmail($email);
+
+        return $cliente;
+    }
+
+    public function findById(string $id)
+    {
+        $cliente = $this->repository->findById($id);
+
+        return $cliente;
+    }
+
     public function getAll(string $search = null)
     {
         $clientes = $this->repository->getAll($search);
@@ -21,10 +44,15 @@ class ClienteService
         return $clientes;
     }
 
-    public function create(array $data)
+    public function create(CreateClienteDTO $dto)
     {
-        $cliente = $this->repository->create($data);
+        $cliente = $this->repository->create($dto);
 
         return $cliente;
+    }
+
+    public function update(UpdateClienteDTO $dto)
+    {
+        return $this->repository->update($dto);
     }
 }

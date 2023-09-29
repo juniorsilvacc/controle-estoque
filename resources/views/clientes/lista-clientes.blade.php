@@ -38,43 +38,8 @@
                             <td>{{ $cliente->nome }}</td>
                             <td>{{ $cliente->email }}</td>
                             <td>
-
-                                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                    data-bs-target="#cliente_editar"><i class="fa-solid fa-pen-to-square"></i></button>
-                                <!-- Modal -->
-                                <div class="modal fade" id="cliente_editar" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Editar Cliente</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-
-                                                <form class="row g-3 my-2">
-                                                    <div class="col-md-6 form-group">
-                                                        <label for="cliente">Nome</label>
-                                                        <input type="cliente" class="form-control" id="cliente">
-                                                    </div>
-                                                    <div class="col-md-6 form-group ">
-                                                        <label for="email">E-mail</label>
-                                                        <input type="email" class="form-control" id="email">
-                                                    </div>
-                                                </form>
-
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger"
-                                                    data-bs-dismiss="modal">Fechar</button>
-                                                <button type="submit" class="btn btn-warning">Atualizar</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <button class="btn btn-danger" type="button"><i class="fa-solid fa-trash"></i></button>
+                                <a href=" {{ route('clientes.edit', $cliente->id) }} " class="btn btn-warning col-md-3">Editar</a>
+                                <a href=" {{ route('clientes.edit', $cliente->id) }} " class="btn btn-danger col-md-3">Excluir</a>
                             </td>
                         </tr>
                     @endforeach

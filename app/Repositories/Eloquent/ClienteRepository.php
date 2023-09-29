@@ -2,6 +2,8 @@
 
 namespace App\Repositories\Eloquent;
 
+use App\DTO\CreateClienteDTO;
+use App\DTO\UpdateClienteDTO;
 use App\Models\Cliente;
 use App\Repositories\ClienteRepositoryInterface;
 
@@ -15,6 +17,39 @@ class ClienteRepository implements ClienteRepositoryInterface
         $this->model = $model;
     }
 
+    public function findByName(string $nome)
+    {
+        $cliente = $this->model->find($nome);
+
+        if (!$cliente) {
+            return null;
+        }
+
+        return $cliente;
+    }
+
+    public function findByEmail(string $email)
+    {
+        $cliente = $this->model->find($email);
+
+        if (!$cliente) {
+            return null;
+        }
+
+        return $cliente;
+    }
+
+    public function findById(string $id)
+    {
+        $cliente = $this->model->find($id);
+
+        if (!$cliente) {
+            return null;
+        }
+
+        return $cliente;
+    }
+
     public function getAll()
     {
         $clientes = $this->model->paginate(5);
@@ -22,10 +57,23 @@ class ClienteRepository implements ClienteRepositoryInterface
         return $clientes;
     }
 
-    public function create(array $data)
+    public function create(CreateClienteDTO $dto)
     {
-        $cliente = $this->model->create($data);
+        $cliente = $this->model->create((array) $dto);
 
-        return $cliente;
+        return $cliente->toArray();
+    }
+
+    public function update(UpdateClienteDTO $dto)
+    {
+        if (!$cliente = $this->model->find($dto->id)) {
+            return null;
+        }
+
+        $cliente->update(
+            (array) $dto
+        );
+
+        return (object) $cliente->toArray();
     }
 }
