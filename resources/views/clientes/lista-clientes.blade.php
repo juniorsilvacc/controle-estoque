@@ -79,21 +79,20 @@
                 </tbody>
             </table>
 
-            <nav aria-label="...">
+            <nav aria-label="Page navigation example">
                 <ul class="pagination">
-                    <li class="page-item disabled">
-                        <span class="page-link">Anterior</span>
-                    </li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
                     <li class="page-item">
-                        <span class="page-link">
-                            2
-                            <span class="sr-only">(atual)</span>
-                        </span>
+                        <a class="page-link" href="{{ $clientes->previousPageUrl() }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
                     </li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="{{ $clientes->url(1) }}">1</a></li>
+                    <li class="page-item"><a class="page-link" href="{{ $clientes->url(2) }}">2</a></li>
+                    <li class="page-item"><a class="page-link" href="{{ $clientes->url(3) }}">3</a></li>
                     <li class="page-item">
-                        <a class="page-link" href="#">Próximo</a>
+                        <a class="page-link" href="{{ $clientes->nextPageUrl() }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
                     </li>
                 </ul>
             </nav>

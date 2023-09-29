@@ -15,17 +15,10 @@ class ClienteRepository implements ClienteRepositoryInterface
         $this->model = $model;
     }
 
-    public function getAll(string $filter = ''): array
+    public function getAll()
     {
-        $clientes = $this->model->where(
-            function ($query) use ($filter) {
-                if ($filter) {
-                    $query->where('email', $filter);
-                    $query->orWhere('nome', 'LIKE', "%{$filter}%");
-                }
-            })
-            ->get();
+        $clientes = $this->model->paginate(5);
 
-        return $clientes->toArray();
+        return $clientes;
     }
 }

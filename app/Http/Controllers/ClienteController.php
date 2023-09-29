@@ -17,9 +17,7 @@ class ClienteController extends Controller
 
     public function listar(Request $request)
     {
-        $clientes = $this->service->getAll(
-            filter: $request->get('filter', '')
-        );
+        $clientes = $this->service->getAll();
 
         return view('clientes.lista-clientes', compact('clientes'));
     }

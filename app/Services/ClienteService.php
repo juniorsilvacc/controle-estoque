@@ -14,10 +14,10 @@ class ClienteService
         $this->repository = $repository;
     }
 
-    public function getAll(string $filter = ''): array
+    public function getAll(string $search = null)
     {
-        $clientes = $this->repository->getAll($filter);
+        $clientes = $this->repository->getAll($search);
 
-        return convertItemsOfArrayToObject($clientes);
+        return $clientes;
     }
 }
