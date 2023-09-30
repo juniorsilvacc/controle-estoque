@@ -4,7 +4,7 @@ return [
     'menus' => [
         [
             'name' => 'Home',
-            'url' => '/home',
+            'url' => '/',
             'icon' => 'fa-solid fa-house',
         ],
         [
