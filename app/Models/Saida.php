@@ -15,4 +15,9 @@ class Saida extends Model
         'data_saida',
         'produto_id',
     ];
+
+    public function produto()
+    {
+        return $this->belongsTo(Produto::class);
+    }
 }

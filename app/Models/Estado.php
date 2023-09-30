@@ -12,4 +12,14 @@ class Estado extends Model
     protected $fillable = [
         'nome',
     ];
+
+    public function cidades()
+    {
+        return $this->hasMany(Cidade::class);
+    }
+
+    public function fornecedor()
+    {
+        return $this->belongsTo(Fornecedor::class);
+    }
 }

@@ -17,4 +17,19 @@ class Fornecedor extends Model
         'user_id',
         'estado_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function estado()
+    {
+        return $this->hasOne(Estado::class);
+    }
+
+    public function produtos()
+    {
+        return $this->hasMany(Produto::class);
+    }
 }

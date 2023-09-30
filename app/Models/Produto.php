@@ -20,4 +20,34 @@ class Produto extends Model
         'categoria_id',
         'user_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class);
+    }
+
+    public function fornecedor()
+    {
+        return $this->belongsTo(Fornecedor::class);
+    }
+
+    public function entradas()
+    {
+        return $this->hasMany(Entrada::class);
+    }
+
+    public function saidas()
+    {
+        return $this->hasMany(Saida::class);
+    }
+
+    public function vendas()
+    {
+        return $this->hasMany(Venda::class);
+    }
 }

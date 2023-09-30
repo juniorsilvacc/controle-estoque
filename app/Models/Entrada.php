@@ -15,4 +15,9 @@ class Entrada extends Model
         'data_entrada',
         'produto_id',
     ];
+
+    public function produto()
+    {
+        return $this->belongsTo(Produto::class);
+    }
 }
