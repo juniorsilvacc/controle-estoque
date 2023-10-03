@@ -12,7 +12,7 @@ return new class() extends Migration {
     {
         Schema::create('cidades', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('nome')->unique();
             $table->foreignId('estado_id')->constrained('estados');
             $table->timestamps();
         });
