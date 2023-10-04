@@ -17,62 +17,64 @@
     </div>
 
     <div class="container-fluid px-4">
-        <div class="row g-3 my-2">
+        <div class="row">
+            <div class="col-12">
 
-            @include('includes.message')
+                @include('includes.message')
 
-            <table class="table table-striped table-hover w-100">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    @forelse ($categorias as $categoria)
+                <table class="table table-striped table-hover">
+                    <thead>
                         <tr>
-                            <th scope="row">{{ $categoria->id }}</th>
-                            <td>{{ $categoria->nome }}</td>
-                            <td>
-                                <a href=" {{ route('categorias.edit', $categoria->id) }} " class="btn btn-warning col-md-3">Editar</a>
-
-                                @include('categorias.partials.delete-modal')
-
-                            </td>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Ações</th>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="1000">
-                                Nenhum Categoria Cadastrada
-                            </td>
-                        </tr>
-                    @endforelse
+                    </thead>
+                    <tbody>
 
-                </tbody>
-            </table>
+                        @forelse ($categorias as $categoria)
+                            <tr>
+                                <th scope="row">{{ $categoria->id }}</th>
+                                <td>{{ $categoria->nome }}</td>
+                                <td>
+                                    <a href=" {{ route('categorias.edit', $categoria->id) }} "
+                                        class="btn btn-warning col-md-2">Editar</a>
 
-            @if ($categorias->count() >= 1)
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <li class="page-item">
-                            <a class="page-link" href="{{ $categorias->previousPageUrl() }}" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="{{ $categorias->url(1) }}">1</a></li>
-                        <li class="page-item"><a class="page-link" href="{{ $categorias->url(2) }}">2</a></li>
-                        <li class="page-item"><a class="page-link" href="{{ $categorias->url(3) }}">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="{{ $categorias->nextPageUrl() }}" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            @endif
+                                    @include('categorias.partials.delete-modal')
 
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="1000">
+                                    Nenhum Categoria Cadastrada
+                                </td>
+                            </tr>
+                        @endforelse
+
+                    </tbody>
+                </table>
+
+                @if ($categorias->count() >= 1)
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="{{ $categorias->previousPageUrl() }}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="{{ $categorias->url(1) }}">1</a></li>
+                            <li class="page-item"><a class="page-link" href="{{ $categorias->url(2) }}">2</a></li>
+                            <li class="page-item"><a class="page-link" href="{{ $categorias->url(3) }}">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="{{ $categorias->nextPageUrl() }}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                @endif
+            </div>
         </div>
     </div>
 @endsection

@@ -6,6 +6,8 @@ use App\Repositories\CategoriaRepositoryInterface;
 use App\Repositories\ClienteRepositoryInterface;
 use App\Repositories\Eloquent\CategoriaRepository;
 use App\Repositories\Eloquent\ClienteRepository;
+use App\Repositories\Eloquent\ProdutoRepository;
+use App\Repositories\ProdutoRepositoryInterface;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,6 +26,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             CategoriaRepositoryInterface::class,
             CategoriaRepository::class,
+        );
+
+        $this->app->singleton(
+            ProdutoRepositoryInterface::class,
+            ProdutoRepository::class,
         );
     }
 

@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProdutoController;
 use Illuminate\Support\Facades\Route;
 
 // Home
@@ -29,3 +30,16 @@ Route::post('/cadastrar-categorias', [CategoriaController::class, 'createAction'
 Route::get('/cadastrar-categorias', [CategoriaController::class, 'create'])->name('categorias.cadastrar-categorias');
 
 Route::get('categorias/{id}/delete', [CategoriaController::class, 'deleteAction'])->name('categorias.deleteAction');
+
+// Produtos
+Route::get('/lista-produtos', [ProdutoController::class, 'index'])->name('produtos.lista-produtos');
+
+Route::put('/produtos/{id}', [ProdutoController::class, 'editAction'])->name('produtos.editAction');
+Route::get('/produtos/{id}/atualizar', [ProdutoController::class, 'edit'])->name('produtos.edit');
+
+Route::post('/cadastrar-produtos', [ProdutoController::class, 'createAction'])->name('produtos.createAction');
+Route::get('/cadastrar-produtos', [ProdutoController::class, 'create'])->name('produtos.cadastrar-produtos');
+
+Route::get('produtos/{id}/delete', [ProdutoController::class, 'deleteAction'])->name('produtos.deleteAction');
+
+Route::get('/detalhes-produtos/{id}', [ProdutoController::class, 'details'])->name('produtos.detalhes-produtos');

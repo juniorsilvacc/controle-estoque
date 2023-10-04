@@ -1,10 +1,10 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-danger col-md-2" data-bs-toggle="modal" data-bs-target="#exampleModal-{{$categoria->id}}">
+<button type="button" class="btn btn-danger col-md-3" data-bs-toggle="modal" data-bs-target="#exampleModal-{{$produto->id}}">
     Excluir
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal-{{$categoria->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal-{{$produto->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -16,7 +16,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <a href=" {{ route('categorias.deleteAction', $categoria->id) }} " class="btn btn-danger">Excluir</a>
+                <a href=" {{ route('produtos.deleteAction', $produto->id) }} " class="btn btn-danger">Excluir</a>
             </div>
         </div>
     </div>
