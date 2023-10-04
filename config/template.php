@@ -19,7 +19,7 @@ return [
         ],
         [
             'name' => 'Fornecedores',
-            'url' => '/lista-forncedores',
+            'url' => '/lista-fornecedores',
             'icon' => 'fa-solid fa-user',
         ],
     ],

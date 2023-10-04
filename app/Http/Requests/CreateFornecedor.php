@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateCategoria extends FormRequest
+class CreateFornecedor extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +23,22 @@ class UpdateCategoria extends FormRequest
     {
         return [
             'nome' => [
+                'required',
                 'min: 3',
                 'max: 255',
                 'string',
-                "unique:categorias,nome,{$this->id},id",
+            ],
+            'empresa' => [
+                'required',
+                'min: 3',
+                'max: 255',
+                'string',
+            ],
+            'email' => [
+                'email',
+            ],
+            'cnpj' => [
+                'string',
             ],
         ];
     }

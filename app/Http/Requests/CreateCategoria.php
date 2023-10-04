@@ -23,6 +23,7 @@ class CreateCategoria extends FormRequest
     {
         return [
             'nome' => [
+                'required',
                 'min: 3',
                 'max: 255',
                 'string',

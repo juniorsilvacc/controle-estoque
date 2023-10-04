@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateProduto;
 class UpdateProdutoDTO
 {
     public function __construct(
+        public string $id,
         public string $nome,
         public string $preco,
         public string $preco_venda,

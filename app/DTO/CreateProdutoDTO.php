@@ -13,6 +13,9 @@ class CreateProdutoDTO
         public string $estoque_inicial,
         public string $estoque_minimo,
         public string $data_produto,
+        public ?int $fornecedor_id = null,
+        public ?int $categoria_id = null,
+        public ?int $user_id = null,
     ) {
     }
 
@@ -25,6 +28,9 @@ class CreateProdutoDTO
             $request->estoque_inicial,
             $request->estoque_minimo,
             $request->data_produto,
+            $request->fornecedor_id,
+            $request->categoria_id,
+            $request->user_id,
         );
     }
 }

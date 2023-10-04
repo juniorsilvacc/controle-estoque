@@ -7,16 +7,18 @@
 </div>
 <div class="col-md-6 form-group">
     <label for="fornecedor">Fornecedor</label>
-    <select class="form-select">
+    <select class="form-select" name="fornecedor_id" value="{{ $produto->fornecedor_id ?? old("fornecedor_id")}}">
         <option selected>Seleciona o fornecedor</option>
-        <option value="1">Junior Silva</option>
-        <option value="2">Junior Silva</option>
-        <option value="3">Junior Silva</option>
+
+        @foreach ($fornecedores as $fornecedor)
+            <option value="{{ $fornecedor->id }}">{{ $fornecedor->nome }}</option>
+        @endforeach
+
     </select>
 </div>
 <div class="col-md-6 form-group">
     <label for="categoria">Categoria</label>
-    <select class="form-select">
+    <select class="form-select" name="categoria_id" value="{{ $produto->categoria_id ?? old("categoria_id")}}">
         <option selected>Selecione a categoria</option>
 
         @foreach ($categorias as $categoria)

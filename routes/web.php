@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProdutoController;
 use Illuminate\Support\Facades\Route;
@@ -43,3 +44,16 @@ Route::get('/cadastrar-produtos', [ProdutoController::class, 'create'])->name('p
 Route::get('produtos/{id}/delete', [ProdutoController::class, 'deleteAction'])->name('produtos.deleteAction');
 
 Route::get('/detalhes-produtos/{id}', [ProdutoController::class, 'details'])->name('produtos.detalhes-produtos');
+
+// Fornecedores
+Route::get('/lista-fornecedores', [FornecedorController::class, 'index'])->name('fornecedores.lista-fornecedores');
+
+Route::put('/fornecedores/{id}', [FornecedorController::class, 'editAction'])->name('fornecedores.editAction');
+Route::get('/fornecedores/{id}/atualizar', [FornecedorController::class, 'edit'])->name('fornecedores.edit');
+
+Route::post('/cadastrar-fornecedores', [FornecedorController::class, 'createAction'])->name('fornecedores.createAction');
+Route::get('/cadastrar-fornecedores', [FornecedorController::class, 'create'])->name('fornecedores.cadastrar-fornecedores');
+
+Route::get('fornecedores/{id}/delete', [FornecedorController::class, 'deleteAction'])->name('fornecedores.deleteAction');
+
+Route::get('/detalhes-fornecedores/{id}', [FornecedorController::class, 'details'])->name('fornecedores.detalhes-fornecedores');

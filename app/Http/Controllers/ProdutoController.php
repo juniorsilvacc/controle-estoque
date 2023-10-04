@@ -7,6 +7,7 @@ use App\DTO\UpdateProdutoDTO;
 use App\Http\Requests\CreateProduto;
 use App\Http\Requests\UpdateProduto;
 use App\Models\Categoria;
+use App\Models\Fornecedor;
 use App\Models\Produto;
 use App\Services\ProdutoService;
 use Illuminate\Http\Request;
@@ -31,8 +32,9 @@ class ProdutoController extends Controller
     public function create()
     {
         $categorias = Categoria::all();
+        $fornecedores = Fornecedor::all();
 
-        return view('produtos.cadastrar-produtos', compact('categorias'));
+        return view('produtos.cadastrar-produtos', compact('categorias', 'fornecedores'));
     }
 
     public function createAction(CreateProduto $request)
