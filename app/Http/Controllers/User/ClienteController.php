@@ -53,7 +53,7 @@ class ClienteController extends Controller
             } else {
                 return redirect()
                     ->back()
-                    ->with('error', 'Você não está logado.');
+                    ->with('alert', 'Você não está logado.');
             }
         }
     }

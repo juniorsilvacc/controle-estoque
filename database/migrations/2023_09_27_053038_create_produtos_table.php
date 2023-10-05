@@ -13,14 +13,19 @@ return new class() extends Migration {
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
             $table->string('nome')->unique();
-            $table->decimal('preco', 8, 2);
-            $table->decimal('preco_venda', 8, 2);
-            $table->integer('estoque_inicial');
-            $table->integer('estoque_minimo');
-            $table->date('data_produto');
+            $table->integer('cod_referencia');
+            $table->text('descricao')->nullable();
+            $table->string('unidade_medida'); // Enum: UN, PC, LT, KG
+            $table->decimal('preco_unitario', 10, 2);
+            $table->integer('estoque');
+            $table->string('image')->nullable();
+            $table->date('data_fabricacao');
+            $table->date('data_validade');
+
             $table->foreignId('fornecedor_id')->constrained('fornecedores');
             $table->foreignId('categoria_id')->constrained('categorias');
             $table->foreignId('user_id')->constrained('users');
+
             $table->timestamps();
         });
     }

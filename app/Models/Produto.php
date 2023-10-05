@@ -11,11 +11,14 @@ class Produto extends Model
 
     protected $fillable = [
         'nome',
-        'preco',
-        'preco_venda',
-        'estoque_inicial',
-        'estoque_minimo',
-        'data_produto',
+        'cod_referencia',
+        'descricao',
+        'unidade_medida',
+        'preco_unitario',
+        'estoque',
+        'image',
+        'data_fabricacao',
+        'data_validade',
         'fornecedor_id',
         'categoria_id',
         'user_id',
@@ -44,10 +47,5 @@ class Produto extends Model
     public function saidas()
     {
         return $this->hasMany(Saida::class);
-    }
-
-    public function vendas()
-    {
-        return $this->hasMany(Venda::class);
     }
 }

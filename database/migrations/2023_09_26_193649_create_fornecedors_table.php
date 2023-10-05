@@ -15,9 +15,14 @@ return new class() extends Migration {
             $table->string('nome');
             $table->string('empresa');
             $table->string('email')->unique();
-            $table->string('cnpj')->unique();
+            $table->string('telefone');
+            $table->string('endereco')->nullable();
+            $table->string('cnpj', 14)->unique();
+            $table->string('tipo'); // Enum: fabricante, distribuidor, atacadista
+            $table->text('observacoes')->nullable();
+
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('estado_id')->constrained('estados');
+
             $table->timestamps();
         });
     }
@@ -29,7 +34,6 @@ return new class() extends Migration {
     {
         Schema::table('fornecedores', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
-            $table->dropForeign(['estado_id']);
         });
 
         Schema::dropIfExists('fornecedores');

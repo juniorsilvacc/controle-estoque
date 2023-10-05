@@ -10,9 +10,9 @@ class Saida extends Model
     use HasFactory;
 
     protected $fillable = [
-        'causa',
         'quantidade',
         'data_saida',
+        'observacoes',
         'produto_id',
     ];
 

@@ -12,10 +12,12 @@ return new class() extends Migration {
     {
         Schema::create('saidas', function (Blueprint $table) {
             $table->id();
-            $table->string('causa');
             $table->integer('quantidade');
             $table->date('data_saida');
+            $table->text('observacoes')->nullable();
+
             $table->foreignId('produto_id')->constrained('produtos');
+
             $table->timestamps();
         });
     }

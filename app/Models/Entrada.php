@@ -10,10 +10,12 @@ class Entrada extends Model
     use HasFactory;
 
     protected $fillable = [
-        'causa',
         'quantidade',
+        'preco_unitario',
         'data_entrada',
+        'observacoes',
         'produto_id',
+        'fornecedor_id',
     ];
 
     public function produto()

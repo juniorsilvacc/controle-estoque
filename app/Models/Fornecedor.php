@@ -15,19 +15,17 @@ class Fornecedor extends Model
         'nome',
         'empresa',
         'email',
+        'telefone',
+        'endereco',
         'cnpj',
+        'tipo',
+        'observacoes',
         'user_id',
-        'estado_id',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function estado()
-    {
-        return $this->hasOne(Estado::class);
     }
 
     public function produtos()

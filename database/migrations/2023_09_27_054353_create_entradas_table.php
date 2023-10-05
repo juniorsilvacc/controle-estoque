@@ -12,10 +12,14 @@ return new class() extends Migration {
     {
         Schema::create('entradas', function (Blueprint $table) {
             $table->id();
-            $table->string('causa');
             $table->integer('quantidade');
+            $table->decimal('preco_unitario', 10, 2);
             $table->date('data_entrada');
+            $table->text('observacoes')->nullable();
+
             $table->foreignId('produto_id')->constrained('produtos');
+            $table->foreignId('fornecedor_id')->constrained('fornecedores');
+
             $table->timestamps();
         });
     }
@@ -27,6 +31,7 @@ return new class() extends Migration {
     {
         Schema::table('entradas', function (Blueprint $table) {
             $table->dropForeign(['produto_id']);
+            $table->dropForeign(['fornecedor_id']);
         });
 
         Schema::dropIfExists('entradas');
