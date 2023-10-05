@@ -1,51 +1,44 @@
 <?php
 
 return [
-    'menus' => [
-        [
-            'name' => 'Home',
-            'url' => '/',
-            'icon' => 'fa-solid fa-house',
-        ],
+    'menusManagement' => [
         [
             'name' => 'Clientes',
             'url' => '/lista-clientes',
             'icon' => 'fa-solid fa-users',
         ],
         [
-            'name' => 'Vendas',
-            'url' => '/vendas',
-            'icon' => 'fas fa-gift',
-        ],
-        [
             'name' => 'Fornecedores',
             'url' => '/lista-fornecedores',
             'icon' => 'fa-solid fa-user',
         ],
-    ],
-    'menusCollapse' => [
         [
-            'nome' => 'Produtos',
-            'nome_A' => 'Produtos',
-            'nome_B' => 'Categorias',
-            'url_A' => '/lista-produtos',
-            'url_B' => '/lista-categorias',
+            'name' => 'Produtos',
+            'url' => '/lista-produtos',
             'icon' => 'fas fa-shopping-cart',
         ],
         [
-            'nome' => 'Estoque',
-            'nome_A' => 'Entradas de Produtos',
-            'nome_B' => 'Saída de Produtos',
-            'url_A' => '/entrada-produtos',
-            'url_B' => '/saida-produtos',
-            'icon' => 'fa-solid fa-truck-ramp-box',
+            'name' => 'Categorias',
+            'url' => '/lista-categorias',
+            'icon' => 'fas fa-boxes',
+        ],
+    ],
+    'menusMovement' => [
+        [
+            'name' => 'Entrada',
+            'url' => '#',
+            'icon' => 'fas fa-arrow-circle-right',
         ],
         [
-            'nome' => 'Consultas',
-            'nome_A' => 'Entradas',
-            'nome_B' => 'Saídas',
-            'url_A' => '/consulta-entrada-produtos',
-            'url_B' => '/consulta-saida-produtos',
+            'name' => 'Saída',
+            'url' => '#',
+            'icon' => 'fas fa-arrow-circle-left',
+        ],
+    ],
+    'menusAnalysis' => [
+        [
+            'name' => 'Consultas',
+            'url' => '#',
             'icon' => 'fas fa-chart-line',
         ],
     ],

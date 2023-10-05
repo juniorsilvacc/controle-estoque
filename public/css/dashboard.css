@@ -24,6 +24,14 @@
   background-color: var(--second-bg-color);
 }
 
+.text-side-bar a{
+    font-weight: bold !important;
+}
+
+.text-side-bar a:hover{
+    color: #FFFFFF;
+}
+
 .bg-color .text-side-bar{
   color: var(--second-text-color);
   border-bottom: 1px solid var(--second-text-color);
@@ -111,6 +119,44 @@ a.page-link, span.page-link {
 a.dropdown-item {
   color: #000;
   font-weight: 400;
+}
+
+.bg-one {
+    background-color: #DC3748;
+}
+.bg-two {
+    background-color:#0E6DFD;
+}
+
+.bg-tree {
+    background-color:#FCC008;
+}
+
+.bg-four {
+    background-color: #1B8755;
+}
+
+.bg-one, .bg-two, .bg-tree, .bg-four {
+    color: #FFF;
+}
+
+.title-home{
+    display: flex;
+    align-items: center;
+}
+
+.title-text {
+    font-size: 14px;
+    color: #868686;
+}
+
+.title-home i{
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.title-home h1{
+    font-size: 26px;
 }
 
 @media (min-width: 768px) {

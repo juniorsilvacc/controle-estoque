@@ -47,7 +47,8 @@
                             <td>
                                 <a href=" {{ route('produtos.edit', $produto->id) }} " class="btn btn-warning"><i
                                         class="fa-solid fa-pen-to-square"></i></a>
-
+                                <a href=" {{ route('produtos.edit', $produto->id) }} " class="btn btn-secondary"><i
+                                        class="fa-solid fa-image"></i></a>
                                 <a href=" {{ route('produtos.detalhes-produtos', $produto->id) }} " class="btn btn-info"><i
                                         class="fa-solid fa-circle-info"></i></a>
                             </td>

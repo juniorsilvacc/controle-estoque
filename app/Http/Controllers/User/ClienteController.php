@@ -35,14 +35,27 @@ class ClienteController extends Controller
 
     public function createAction(CreateCliente $request)
     {
-        // $user = auth()->user();
+        // Obtém o ID do usuário logado
+        $userId = auth()->id();
 
-        // $this->service->create(CreateClienteDTO::makeFromRequest($request));
-        $this->service->create(CreateClienteDTO::makeFromRequest($request));
+        // Verifica se o usuário está logado
+        if ($userId) {
+            // Crie o cliente associado ao ID do usuário logado
+            $clienteData = CreateClienteDTO::makeFromRequest($request);
+            $clienteData->user_id = $userId; // Associa o usuário ao cliente
 
-        return redirect()
-            ->route('clientes.lista-clientes')
-            ->with('message', 'Cadastrado com Sucesso.');
+            $cliente = $this->service->create($clienteData);
+
+            if ($cliente) {
+                return redirect()
+                    ->route('clientes.lista-clientes')
+                    ->with('message', 'Cadastrado com Sucesso.');
+            } else {
+                return redirect()
+                    ->back()
+                    ->with('error', 'Você não está logado.');
+            }
+        }
     }
 
     public function edit(string $id)

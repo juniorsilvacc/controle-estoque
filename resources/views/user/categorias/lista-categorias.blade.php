@@ -37,11 +37,11 @@
                                 <th scope="row">{{ $categoria->id }}</th>
                                 <td>{{ $categoria->nome }}</td>
                                 <td>
-                                    <a href=" {{ route('categorias.edit', $categoria->id) }} "
-                                        class="btn btn-warning col-md-2">Editar</a>
+                                    <a href=" {{ route('categorias.edit', $categoria->id) }} " class="btn btn-warning"><i
+                                            class="fa-solid fa-pen-to-square"></i></a>
 
-                                    @include('user.categorias.partials.delete-modal')
-
+                                    <a href=" {{ route('fornecedores.detalhes-fornecedores', $categoria->id) }} "
+                                        class="btn btn-info"><i class="fa-solid fa-circle-info"></i></a>
                                 </td>
                             </tr>
                         @empty

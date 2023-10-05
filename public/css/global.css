@@ -36,3 +36,16 @@ form .form-select option {
 .form-control, .form-select:focus {
   box-shadow:none !important;
 }
+
+.management-sidebar{
+    font-weight: bold;
+    color: #FFFFFF;
+    margin: 20px 0 10px 0;
+}
+
+.title-sidebar{
+    font-weight: bold;
+    color: #FFFFFF;
+    margin: 10px 0 10px 0;
+}
+
