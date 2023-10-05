@@ -28,7 +28,12 @@
         </a>
     @endforeach
 
-    <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger">
-        <i class="fas fa-power-off me-2"></i>Sair
-    </a>
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <a href="route('logout')"
+        onclick="event.preventDefault();
+                    this.closest('form').submit();" class="list-group-item list-group-item-action bg-transparent text-danger">
+            <i class="fas fa-power-off me-2"></i>Sair
+        </a>
+    </form>
 </div>
