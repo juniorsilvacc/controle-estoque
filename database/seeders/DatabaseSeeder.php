@@ -11,8 +11,6 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserTableSeeder::class,
             ClienteTableSeeder::class,
-            EstadoTableSeeder::class,
-            CidadeTableSeeder::class,
             CategoriaTableSeeder::class,
             FornecedorTableSeeder::class,
             ProdutoTableSeeder::class,

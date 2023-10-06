@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Estado;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,10 +17,14 @@ class FornecedorFactory extends Factory
      */
     public function definition(): array
     {
+        $statusEnum = ['Fabricante', 'Distribuidor', 'Atacadista'];
+
         return [
             'nome' => fake()->word,
             'empresa' => fake()->word,
             'email' => fake()->unique()->safeEmail(),
+            'telefone' => fake()->phoneNumber,
+            'endereco' => fake()->streetAddress,
             'cnpj' => function () {
                 $cnpj = '';
                 for ($i = 0; $i < 14; ++$i) {
@@ -30,8 +33,9 @@ class FornecedorFactory extends Factory
 
                 return $cnpj;
             },
+            'tipo' => fake()->randomElement($statusEnum),
+            'observacoes' => fake()->text,
             'user_id' => User::all()->random(),
-            'estado_id' => Estado::all()->random(),
         ];
     }
 }

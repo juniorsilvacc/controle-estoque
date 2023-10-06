@@ -13,7 +13,7 @@ return new class() extends Migration {
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
             $table->string('nome')->unique();
-            $table->integer('cod_referencia');
+            $table->integer('cod_referencia')->unique();
             $table->text('descricao')->nullable();
             $table->string('unidade_medida'); // Enum: UN, PC, LT, KG
             $table->decimal('preco_unitario', 10, 2);
