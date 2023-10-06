@@ -31,7 +31,7 @@ class UpdateCliente extends FormRequest
             'email' => [
                 'nullable',
                 'email',
-                "unique:cliente,email,{$this->id},id",
+                "unique:clientes,email,{$this->id},id",
             ],
         ];
     }

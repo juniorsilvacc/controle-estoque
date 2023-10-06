@@ -2,7 +2,7 @@
 
 @csrf
 <div class="col-md-6 form-group">
-    <label for="nome">Nome</label>
+    <label for="nome">Nome (*)</label>
     <input type="text" class="form-control" id="nome" name="nome" value="{{ $cliente->nome ?? old('nome') }}">
 </div>
 <div class="col-md-6 form-group ">

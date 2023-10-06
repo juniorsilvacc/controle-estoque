@@ -9,7 +9,7 @@ class UpdateClienteDTO
     public function __construct(
         public int $id,
         public string $nome,
-        public string $email,
+        public ?string $email = null,
         public ?int $user_id = null,
     ) {
     }
