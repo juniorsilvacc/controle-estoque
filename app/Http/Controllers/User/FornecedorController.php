@@ -30,42 +30,64 @@ class FornecedorController extends Controller
 
     public function create()
     {
-        $estados = json_decode(file_get_contents(public_path('estados.json')), true);
+        $tiposFornecedores = json_decode(file_get_contents(public_path('tiposFornecedores.json')), true);
 
-        return view('user.fornecedores.cadastrar-fornecedores', compact('estados'));
+        return view('user.fornecedores.cadastrar-fornecedores', compact('tiposFornecedores'));
     }
 
     public function createAction(CreateFornecedor $request)
     {
-        dd($this->service->create(CreateFornecedorDTO::makeFromRequest($request)));
+        $userId = auth()->id();
 
-        return redirect()
-            ->route('fornecedores.lista-fornecedores')
-            ->with('message', 'Cadastrado com Sucesso.');
+        if ($userId) {
+            $fornecedorData = CreateFornecedorDTO::makeFromRequest($request);
+            $fornecedorData->user_id = $userId;
+
+            $fornecedor = $this->service->create($fornecedorData);
+
+            if ($fornecedor) {
+                return redirect()
+                    ->route('fornecedores.lista-fornecedores')
+                    ->with('message', 'Cadastrado com Sucesso.');
+            } else {
+                return redirect()
+                    ->back()
+                    ->with('alert', 'Você não está logado.');
+            }
+        }
     }
 
     public function edit(string $id)
     {
+        $tiposFornecedores = json_decode(file_get_contents(public_path('tiposFornecedores.json')), true);
+
         if (!$fornecedor = $this->service->findById($id)) {
             return back();
         }
 
-        return view('user.fornecedores.edit', compact('fornecedor'));
+        return view('user.fornecedores.edit', compact('fornecedor', 'tiposFornecedores'));
     }
 
     public function editAction(UpdateFornecedor $request, Fornecedor $fornecedor)
     {
-        $fornecedor = $this->service->update(
-            UpdateFornecedorDTO::makeFromRequest($request),
-        );
+        $userId = auth()->id();
 
-        if (!$fornecedor) {
-            return back();
+        if ($userId) {
+            $fornecedorData = UpdateFornecedorDTO::makeFromRequest($request);
+            $fornecedorData->user_id = $userId;
+
+            $fornecedor = $this->service->update($fornecedorData);
+
+            if ($fornecedor) {
+                return redirect()
+                    ->route('fornecedores.lista-fornecedores')
+                    ->with('message', 'Atualizado com Sucesso.');
+            } else {
+                return redirect()
+                    ->back()
+                    ->with('alert', 'Você não está logado.');
+            }
         }
-
-        return redirect()
-                ->route('fornecedores.lista-fornecedores')
-                ->with('message', 'Atualizado com Sucesso.');
     }
 
     public function deleteAction(string $id)

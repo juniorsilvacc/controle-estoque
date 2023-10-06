@@ -34,41 +34,66 @@ class ProdutoController extends Controller
     {
         $categorias = Categoria::all();
         $fornecedores = Fornecedor::all();
+        $unidadesMedidas = json_decode(file_get_contents(public_path('unidadesMedidas.json')), true);
 
-        return view('user.produtos.cadastrar-produtos', compact('categorias', 'fornecedores'));
+        return view('user.produtos.cadastrar-produtos', compact('categorias', 'fornecedores', 'unidadesMedidas'));
     }
 
     public function createAction(CreateProduto $request)
     {
-        $this->service->create(CreateProdutoDTO::makeFromRequest($request));
+        $userId = auth()->id();
 
-        return redirect()
-            ->route('produtos.lista-produtos')
-            ->with('message', 'Cadastrado com Sucesso.');
+        if ($userId) {
+            $produtoData = CreateProdutoDTO::makeFromRequest($request);
+            $produtoData->user_id = $userId;
+
+            $produto = $this->service->create($produtoData);
+
+            if ($produto) {
+                return redirect()
+                    ->route('produtos.lista-produtos')
+                    ->with('message', 'Cadastrado com Sucesso.');
+            } else {
+                return redirect()
+                    ->back()
+                    ->with('alert', 'Você não está logado.');
+            }
+        }
     }
 
     public function edit(string $id)
     {
+        $categorias = Categoria::all();
+        $fornecedores = Fornecedor::all();
+        $unidadesMedidas = json_decode(file_get_contents(public_path('unidadesMedidas.json')), true);
+
         if (!$produto = $this->service->findById($id)) {
             return back();
         }
 
-        return view('user.produtos.edit', compact('produto'));
+        return view('user.produtos.edit', compact('produto', 'categorias', 'fornecedores', 'unidadesMedidas'));
     }
 
     public function editAction(UpdateProduto $request, Produto $produto)
     {
-        $produto = $this->service->update(
-            UpdateProdutoDTO::makeFromRequest($request),
-        );
+        $userId = auth()->id();
 
-        if (!$produto) {
-            return back();
+        if ($userId) {
+            $produtoData = UpdateProdutoDTO::makeFromRequest($request);
+            $produtoData->user_id = $userId;
+
+            $produto = $this->service->update($produtoData);
+
+            if ($produto) {
+                return redirect()
+                    ->route('produtos.lista-produtos')
+                    ->with('message', 'Atualizado com Sucesso.');
+            } else {
+                return redirect()
+                    ->back()
+                    ->with('alert', 'Você não está logado.');
+            }
         }
-
-        return redirect()
-                ->route('produtos.lista-produtos')
-                ->with('message', 'Atualizado com Sucesso.');
     }
 
     public function deleteAction(string $id)

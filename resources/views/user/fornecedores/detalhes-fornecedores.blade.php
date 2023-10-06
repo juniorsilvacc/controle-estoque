@@ -3,22 +3,27 @@
 @section('title', 'Detalhes Fornecedor')
 
 @section('content')
-    <div class="container-fluid px-4">
-        <div class="row bg-form">
-            <div class="col bg-title-form">
+    <div class="container-fluid px-4 details">
+        <div class="row bg-details">
+            <div class="col title-details">
                 <h1>Detalhes Fornecedor</h1>
             </div>
-            <form class="row g-3 my-2" action="{{ route('fornecedores.deleteAction', $fornecedor->id) }}" method="POST">
+            <div class="informations">
+                <h6><strong>Nome:</strong> {{ $fornecedor->nome }} </h6>
+                <h6><strong>Empresa:</strong> {{ $fornecedor->empresa }} </h6>
+                <h6><strong>E-mail:</strong> {{ $fornecedor->email }} </h6>
+                <h6><strong>Telefone:</strong> {{ $fornecedor->telefone }} </h6>
+                <h6><strong>Endereço:</strong> {{ $fornecedor->endereço }} </h6>
+                <h6><strong>CNPJ:</strong> {{ $fornecedor->cnpj }} </h6>
+                <h6><strong>Tipo Fornecedor:</strong> {{ $fornecedor->tipo }} </h6>
+                <h6><strong>Observações:</strong> {{ $fornecedor->observacoes }} </h6>
+            </div>
 
-                <ul>
-                    <li>{{$fornecedor->nome}}</li>
-                    <li>{{$fornecedor->empresa}}</li>
-                    <li>{{$fornecedor->email}}</li>
-                    <li>{{$fornecedor->cnpj}}</li>
-                </ul>
+            <form class="form-delete" action="{{ route('fornecedores.deleteAction', $fornecedor->id) }}" method="POST">
 
                 @method('delete')
                 @csrf
+
                 @include('user.fornecedores.partials.delete-modal')
 
             </form>

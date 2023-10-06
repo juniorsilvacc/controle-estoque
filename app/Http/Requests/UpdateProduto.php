@@ -25,25 +25,33 @@ class UpdateProduto extends FormRequest
             'nome' => [
                 'required',
                 'min: 3',
-                'max: 255',
+                'max: 100',
                 'string',
                 "unique:produtos,nome,{$this->id},id",
             ],
-            'preco' => [
+            'cod_referencia' => [
                 'required',
                 'numeric',
+                "unique:produtos,cod_referencia,{$this->id},id",
             ],
-            'preco_venda' => [
-                'required',
+            'descricao' => [
+                'nullable',
+                'string',
+                'max: 255',
+            ],
+            'unidade_medida' => [
+                'string',
+            ],
+            'preco_unitario' => [
                 'numeric',
             ],
-            'estoque_inicial' => [
+            'estoque' => [
                 'numeric',
             ],
-            'estoque_minimo' => [
-                'numeric',
+            'data_fabricacao' => [
+                'date',
             ],
-            'data_produto' => [
+            'data_validade' => [
                 'date',
             ],
         ];

@@ -22,8 +22,8 @@ return new class() extends Migration {
             $table->date('data_fabricacao');
             $table->date('data_validade');
 
-            $table->foreignId('fornecedor_id')->constrained('fornecedores');
-            $table->foreignId('categoria_id')->constrained('categorias');
+            $table->foreignId('fornecedor_id')->constrained('fornecedores')->onDelete('cascade');
+            $table->foreignId('categoria_id')->constrained('categorias')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users');
 
             $table->timestamps();

@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "nome": "Fabricante"
+    },
+    {
+        "id": 2,
+        "nome": "Distribuidor"
+    },
+    {
+        "id": 3,
+        "nome": "Atacadista"
+    }
+]

@@ -13,9 +13,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle second-text" href="#" id="navbarDropdown"
+                <a class="nav-link dropdown-toggle second-text d-flex align-items-center" href="#" id="navbarDropdown"
                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-user me-2"></i>Júniior Silva
+                    <div class="online-indicator"></div>{{ auth()->user()->name }}
+
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#">Perfil</a></li>

@@ -40,7 +40,7 @@
                                     <a href=" {{ route('categorias.edit', $categoria->id) }} " class="btn btn-warning"><i
                                             class="fa-solid fa-pen-to-square"></i></a>
 
-                                    <a href=" {{ route('fornecedores.detalhes-fornecedores', $categoria->id) }} "
+                                    <a href=" {{ route('categorias.detalhes-categorias', $categoria->id) }} "
                                         class="btn btn-info"><i class="fa-solid fa-circle-info"></i></a>
                                 </td>
                             </tr>

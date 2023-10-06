@@ -113,6 +113,11 @@ a.dropdown-item {
   font-weight: 400;
 }
 
+/* Detalhes */
+.title-details {
+
+}
+
 @media (min-width: 768px) {
   #sidebar-wrapper {
     margin-left: 0;

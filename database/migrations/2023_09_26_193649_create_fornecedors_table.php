@@ -14,7 +14,7 @@ return new class() extends Migration {
             $table->id();
             $table->string('nome');
             $table->string('empresa');
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
             $table->string('telefone');
             $table->string('endereco')->nullable();
             $table->string('cnpj', 14)->unique();

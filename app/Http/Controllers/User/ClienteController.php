@@ -69,17 +69,24 @@ class ClienteController extends Controller
 
     public function editAction(UpdateCliente $request, Cliente $cliente)
     {
-        $cliente = $this->service->update(
-            UpdateClienteDTO::makeFromRequest($request),
-        );
+        $userId = auth()->id();
 
-        if (!$cliente) {
-            return back();
+        if ($userId) {
+            $clienteData = UpdateClienteDTO::makeFromRequest($request);
+            $clienteData->user_id = $userId;
+
+            $cliente = $this->service->update($clienteData);
+
+            if ($cliente) {
+                return redirect()
+                    ->route('clientes.lista-clientes')
+                    ->with('message', 'Atualizado com Sucesso.');
+            } else {
+                return redirect()
+                    ->back()
+                    ->with('alert', 'Você não está logado.');
+            }
         }
-
-        return redirect()
-                ->route('clientes.lista-clientes')
-                ->with('message', 'Atualizado com Sucesso.');
     }
 
     public function deleteAction(string $id)
@@ -89,5 +96,14 @@ class ClienteController extends Controller
         return redirect()
                 ->route('clientes.lista-clientes')
                 ->with('message', 'Deletado com Sucesso.');
+    }
+
+    public function details(string $id)
+    {
+        if (!$cliente = $this->service->findById($id)) {
+            return back();
+        }
+
+        return view('user.clientes.detalhes-clientes', compact('cliente'));
     }
 }

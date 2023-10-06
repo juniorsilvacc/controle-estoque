@@ -10,6 +10,7 @@ class UpdateClienteDTO
         public int $id,
         public string $nome,
         public string $email,
+        public ?int $user_id = null,
     ) {
     }
 
@@ -19,6 +20,7 @@ class UpdateClienteDTO
             $request->id,
             $request->nome,
             $request->email,
+            $request->user_id,
         );
     }
 }

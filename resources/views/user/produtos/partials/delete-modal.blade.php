@@ -1,10 +1,12 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-danger col-md-3" data-bs-toggle="modal" data-bs-target="#exampleModal-{{$produto->id}}">
+<button type="button" class="btn btn-danger col-md-3" data-bs-toggle="modal"
+    data-bs-target="#exampleModal-{{ $produto->id }}">
     Excluir
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal-{{$produto->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal-{{ $produto->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

@@ -25,22 +25,41 @@ class UpdateFornecedor extends FormRequest
             'nome' => [
                 'required',
                 'min: 3',
-                'max: 255',
+                'max: 100',
                 'string',
             ],
             'empresa' => [
                 'required',
                 'min: 3',
-                'max: 255',
+                'max: 100',
                 'string',
             ],
             'email' => [
+                'nullable',
                 'email',
                 "unique:fornecedores,email,{$this->id},id",
             ],
+            'telefone' => [
+                'string',
+                'size:11',
+            ],
             'cnpj' => [
+                'required',
+                'size:14',
                 'string',
                 "unique:fornecedores,cnpj,{$this->id},id",
+            ],
+            'endereco' => [
+                'nullable',
+                'string',
+            ],
+            'tipo' => [
+                'string',
+            ],
+            'observacoes' => [
+                'nullable',
+                'string',
+                'max: 255',
             ],
         ];
     }

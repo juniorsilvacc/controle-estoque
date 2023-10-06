@@ -26,10 +26,10 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nome</th>
-                        <th scope="col">Preço</th>
-                        <th scope="col">Preço da Venda</th>
-                        <th scope="col">Estoque Inicial</th>
-                        <th scope="col">Estoque Mínimo</th>
+                        <th scope="col">Cód. Referência</th>
+                        <th scope="col">Un. Médida</th>
+                        <th scope="col">Preço Uni.</th>
+                        <th scope="col">Estoque</th>
 
                         <th scope="col">Ações</th>
                     </tr>
@@ -40,10 +40,10 @@
                         <tr>
                             <th scope="row">{{ $produto->id }}</th>
                             <td>{{ $produto->nome }}</td>
-                            <td>{{ $produto->preco }}</td>
-                            <td>{{ $produto->preco_venda }}</td>
-                            <td>{{ $produto->estoque_inicial }}</td>
-                            <td>{{ $produto->estoque_minimo }}</td>
+                            <td>{{ $produto->cod_referencia }}</td>
+                            <td>{{ $produto->unidade_medida }}</td>
+                            <td>{{ $produto->preco_unitario }}</td>
+                            <td>{{ $produto->estoque }}</td>
                             <td>
                                 <a href=" {{ route('produtos.edit', $produto->id) }} " class="btn btn-warning"><i
                                         class="fa-solid fa-pen-to-square"></i></a>

@@ -28,6 +28,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('clientes/{id}/delete', [ClienteController::class, 'deleteAction'])->name('clientes.deleteAction');
 
+    Route::get('/detalhes-clientes/{id}', [ClienteController::class, 'details'])->name('clientes.detalhes-clientes');
+
     // Categorias
     Route::get('/lista-categorias', [CategoriaController::class, 'index'])->name('categorias.lista-categorias');
 
@@ -38,6 +40,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/cadastrar-categorias', [CategoriaController::class, 'create'])->name('categorias.cadastrar-categorias');
 
     Route::get('categorias/{id}/delete', [CategoriaController::class, 'deleteAction'])->name('categorias.deleteAction');
+
+    Route::get('/detalhes-categorias/{id}', [CategoriaController::class, 'details'])->name('categorias.detalhes-categorias');
 
     // Produtos
     Route::get('/lista-produtos', [ProdutoController::class, 'index'])->name('produtos.lista-produtos');

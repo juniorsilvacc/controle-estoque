@@ -74,4 +74,13 @@ class CategoriaController extends Controller
                 ->route('categorias.lista-categorias')
                 ->with('message', 'Deletado com Sucesso.');
     }
+
+    public function details(string $id)
+    {
+        if (!$categoria = $this->service->findById($id)) {
+            return back();
+        }
+
+        return view('user.categorias.detalhes-categorias', compact('categoria'));
+    }
 }

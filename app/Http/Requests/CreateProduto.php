@@ -25,24 +25,35 @@ class CreateProduto extends FormRequest
             'nome' => [
                 'required',
                 'min: 3',
+                'max: 100',
+                'string',
+                'unique:produtos,nome,nome',
+            ],
+            'cod_referencia' => [
+                'required',
+                'numeric',
+                'unique:produtos,cod_referencia,cod_referencia',
+            ],
+            'descricao' => [
+                'nullable',
+                'string',
                 'max: 255',
+            ],
+            'unidade_medida' => [
                 'string',
             ],
-            'preco' => [
+            'preco_unitario' => [
                 'required',
                 'numeric',
             ],
-            'preco_venda' => [
+            'estoque' => [
                 'required',
                 'numeric',
             ],
-            'estoque_inicial' => [
-                'numeric',
+            'data_fabricacao' => [
+                'date',
             ],
-            'estoque_minimo' => [
-                'numeric',
-            ],
-            'data_produto' => [
+            'data_validade' => [
                 'date',
             ],
         ];

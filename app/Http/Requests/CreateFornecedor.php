@@ -25,20 +25,40 @@ class CreateFornecedor extends FormRequest
             'nome' => [
                 'required',
                 'min: 3',
-                'max: 255',
+                'max: 100',
                 'string',
             ],
             'empresa' => [
                 'required',
                 'min: 3',
-                'max: 255',
+                'max: 100',
                 'string',
             ],
             'email' => [
+                'nullable',
                 'email',
             ],
-            'cnpj' => [
+            'telefone' => [
                 'string',
+                'size:11',
+            ],
+            'cnpj' => [
+                'required',
+                'size:14',
+                'string',
+                'unique:fornecedores,cnpj,cnpj',
+            ],
+            'endereco' => [
+                'nullable',
+                'string',
+            ],
+            'tipo' => [
+                'string',
+            ],
+            'observacoes' => [
+                'nullable',
+                'string',
+                'max: 255',
             ],
         ];
     }
