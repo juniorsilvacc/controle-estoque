@@ -56,7 +56,7 @@
                     @empty
                         <tr>
                             <td colspan="1000">
-                                Nenhum Produto Cadastrada
+                                Nenhum produto cadastrado
                             </td>
                         </tr>
                     @endforelse

@@ -53,7 +53,7 @@
                     @empty
                         <tr>
                             <td colspan="1000">
-                                Nenhum fornecedor Cadastrada
+                                Nenhum fornecedor Cadastrado
                             </td>
                         </tr>
                     @endforelse

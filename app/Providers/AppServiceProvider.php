@@ -6,8 +6,10 @@ use App\Repositories\CategoriaRepositoryInterface;
 use App\Repositories\ClienteRepositoryInterface;
 use App\Repositories\Eloquent\CategoriaRepository;
 use App\Repositories\Eloquent\ClienteRepository;
+use App\Repositories\Eloquent\EstatisticaRepository;
 use App\Repositories\Eloquent\FornecedorRepository;
 use App\Repositories\Eloquent\ProdutoRepository;
+use App\Repositories\EstatisticaRepositoryInterface;
 use App\Repositories\FornecedorRepositoryInterface;
 use App\Repositories\ProdutoRepositoryInterface;
 use Illuminate\Pagination\Paginator;
@@ -38,6 +40,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             FornecedorRepositoryInterface::class,
             FornecedorRepository::class,
+        );
+
+        $this->app->singleton(
+            EstatisticaRepositoryInterface::class,
+            EstatisticaRepository::class,
         );
     }
 

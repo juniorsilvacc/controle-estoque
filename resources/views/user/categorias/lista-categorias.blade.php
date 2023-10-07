@@ -47,7 +47,7 @@
                         @empty
                             <tr>
                                 <td colspan="1000">
-                                    Nenhum Categoria Cadastrada
+                                    Nenhuma categoria cadastrada
                                 </td>
                             </tr>
                         @endforelse
