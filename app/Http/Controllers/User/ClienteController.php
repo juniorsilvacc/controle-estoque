@@ -49,7 +49,7 @@ class ClienteController extends Controller
             if ($cliente) {
                 return redirect()
                     ->route('clientes.lista-clientes')
-                    ->with('message', 'Cadastrado com Sucesso.');
+                    ->with('success', 'Cadastrado com sucesso');
             } else {
                 return redirect()
                     ->back()
@@ -80,7 +80,7 @@ class ClienteController extends Controller
             if ($cliente) {
                 return redirect()
                     ->route('clientes.lista-clientes')
-                    ->with('message', 'Atualizado com Sucesso.');
+                    ->with('success', 'Atualizado com sucesso');
             } else {
                 return redirect()
                     ->back()
@@ -95,7 +95,7 @@ class ClienteController extends Controller
 
         return redirect()
                 ->route('clientes.lista-clientes')
-                ->with('message', 'Deletado com Sucesso.');
+                ->with('success', 'Deletado com sucesso');
     }
 
     public function details(string $id)

@@ -39,7 +39,7 @@ class CategoriaController extends Controller
 
         return redirect()
             ->route('categorias.lista-categorias')
-            ->with('message', 'Cadastrado com Sucesso.');
+            ->with('success', 'Cadastrado com sucesso');
     }
 
     public function edit(string $id)
@@ -63,7 +63,7 @@ class CategoriaController extends Controller
 
         return redirect()
                 ->route('categorias.lista-categorias')
-                ->with('message', 'Atualizado com Sucesso.');
+                ->with('success', 'Atualizado com sucesso');
     }
 
     public function deleteAction(string $id)
@@ -72,7 +72,7 @@ class CategoriaController extends Controller
 
         return redirect()
                 ->route('categorias.lista-categorias')
-                ->with('message', 'Deletado com Sucesso.');
+                ->with('success', 'Deletado com sucesso');
     }
 
     public function details(string $id)

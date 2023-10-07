@@ -48,7 +48,7 @@ class FornecedorController extends Controller
             if ($fornecedor) {
                 return redirect()
                     ->route('fornecedores.lista-fornecedores')
-                    ->with('message', 'Cadastrado com Sucesso.');
+                    ->with('success', 'Cadastrado com sucesso');
             } else {
                 return redirect()
                     ->back()
@@ -81,7 +81,7 @@ class FornecedorController extends Controller
             if ($fornecedor) {
                 return redirect()
                     ->route('fornecedores.lista-fornecedores')
-                    ->with('message', 'Atualizado com Sucesso.');
+                    ->with('success', 'Atualizado com sucesso');
             } else {
                 return redirect()
                     ->back()
@@ -96,7 +96,7 @@ class FornecedorController extends Controller
 
         return redirect()
                 ->route('fornecedores.lista-fornecedores')
-                ->with('message', 'Deletado com Sucesso.');
+                ->with('success', 'deletado com sucesso');
     }
 
     public function details(string $id)

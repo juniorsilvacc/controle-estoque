@@ -52,7 +52,7 @@ class ProdutoController extends Controller
             if ($produto) {
                 return redirect()
                     ->route('produtos.lista-produtos')
-                    ->with('message', 'Cadastrado com Sucesso.');
+                    ->with('success', 'Cadastrado com sucesso');
             } else {
                 return redirect()
                     ->back()
@@ -87,7 +87,7 @@ class ProdutoController extends Controller
             if ($produto) {
                 return redirect()
                     ->route('produtos.lista-produtos')
-                    ->with('message', 'Atualizado com Sucesso.');
+                    ->with('success', 'Atualizado com sucesso');
             } else {
                 return redirect()
                     ->back()
@@ -102,7 +102,7 @@ class ProdutoController extends Controller
 
         return redirect()
                 ->route('produtos.lista-produtos')
-                ->with('message', 'Deletado com Sucesso.');
+                ->with('success', 'Deletado com sucesso');
     }
 
     public function details(string $id)
