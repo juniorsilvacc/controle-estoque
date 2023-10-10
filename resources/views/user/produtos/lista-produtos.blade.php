@@ -21,7 +21,7 @@
 
             @include('components.includes.message')
 
-            <table class="table table-striped table-hover w-100">
+            <table class="table table-striped table-hover w-100 text-center">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -42,7 +42,7 @@
                             <td>{{ $produto->nome }}</td>
                             <td>{{ $produto->cod_referencia }}</td>
                             <td>{{ $produto->unidade_medida }}</td>
-                            <td>{{ $produto->preco_unitario }}</td>
+                            <td>R$ {{ $produto->preco_unitario }}</td>
                             <td>{{ $produto->estoque }}</td>
                             <td>
                                 <a href=" {{ route('produtos.edit', $produto->id) }} " class="btn btn-warning"><i

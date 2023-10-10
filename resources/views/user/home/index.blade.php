@@ -42,14 +42,14 @@
                 <div class="card shadow">
                     <div class="card-body bg-tree">
                         <p class="card-text">
-                            @if($produtosEstoqueMinimo->count() <= 5)
-                                {{$produtosEstoqueMinimo->count()}} Produtos com estoque mínimo
+                            @if ($produtosEstoqueMinimo->count() <= 5)
+                                {{ $produtosEstoqueMinimo->count() }} Produtos com estoque mínimo
                             @else
                                 Não há nenhum produto com estoque mínimo
                             @endif
                         </p>
                         <p class="card-text">
-                            {{ $produtosEstoqueZero == 0 ? 'Não há nenhum produto com estoque zerado' : "{$produtosEstoqueZero} Produtos com estoque zerado"}}
+                            {{ $produtosEstoqueZero == 1 ? '1 Produto com estoque zerado' : ($produtosEstoqueZero == 0 ? 'Não há nenhum produto com estoque zerado' : "{$produtosEstoqueZero} Produtos com estoque zerado") }}
                         </p>
                     </div>
                 </div>
@@ -57,8 +57,10 @@
             <div class="col-md-6 mx-auto">
                 <div class="card shadow">
                     <div class="card-body bg-four">
-                        <p class="card-text">Investimentos: R$ 500,00</p>
-                        <p class="card-text">Retorno Previsto: R$ 800,00</p>
+                        <p class="card-text">Investimentos:
+                            {{ 'R$ ' . number_format($precoTotalInvestimento, 2, ',', '.') }}</p>
+                        <p class="card-text">Retorno Previsto:
+                            {{ 'R$ ' . number_format($precoTotalRetornoPrevisto, 2, ',', '.') }}</p>
                     </div>
                 </div>
             </div>
@@ -66,11 +68,11 @@
             <div class="col-md-6">
                 <div class="card shadow">
                     <div class="card-body">
-                        <h4 class="mt-0 header-title mb-3">Gráficos</h4>
+                        <h6 class="mt-0 header-title mb-3">Estoque</h6>
                         <hr>
                         <div class="inbox-wid">
                             <div class="inbox-item">
-                                <canvas id="estoqueChart" width="400" height="200"></canvas>
+                                <canvas id="estoqueChart" width="400" height="300"></canvas>
                             </div>
                         </div>
                     </div>
@@ -80,7 +82,7 @@
             <div class="col-md-6">
                 <div class="card shadow">
                     <div class="card-body">
-                        <h4 class="mt-0 header-title mb-3">Gráficos</h4>
+                        <h6 class="mt-0 header-title mb-3">Quant. Produtos por Categoria</h6>
                         <hr>
                         <div class="inbox-wid">
                             <div class="inbox-item">
@@ -97,61 +99,59 @@
 
 @section('script')
 
-<script>
-    var quantidades = @json($quantidades);
+    <script>
+        var quantidades = @json($quantidades);
 
-    var ctx = document.getElementById('estoqueChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: [...Array(quantidades.length).keys()],
-            datasets: [{
-                label: 'Quantidade em Estoque',
-                data: quantidades,
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+        var ctx = document.getElementById('estoqueChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [...Array(quantidades.length).keys()],
+                datasets: [{
+                    label: 'Quantidade em Estoque',
+                    data: quantidades,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
-        }
-    });
+        });
 
-    var estoqueChart = document.getElementById('estoqueChart');
-    estoqueChart.style.maxHeight = '300px';
-</script>
+        var estoqueChart = document.getElementById('estoqueChart');
+        estoqueChart.style.maxHeight = '300px';
+    </script>
 
-<script>
-    var ctx = document.getElementById('pieChart').getContext('2d');
-    var data = @json($data);
+    <script>
+        var ctx = document.getElementById('pieChart').getContext('2d');
+        var data = @json($data);
 
-    var pieChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: Object.keys(data), // Nomes das categorias
-            datasets: [{
-                data: Object.values(data), // Contagem de produtos por categoria
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.7)', // Cor da categoria 1
-                    'rgba(54, 162, 235, 0.7)', // Cor da categoria 2
-                    'rgba(255, 206, 86, 0.7)', // Cor da categoria 3
-                    // Adicione mais cores conforme necessário
-                ],
-            }],
-        },
-    });
+        var pieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: Object.keys(data), // Nomes das categorias
+                datasets: [{
+                    data: Object.values(data), // Contagem de produtos por categoria
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.7)', // Cor da categoria 1
+                        'rgba(54, 162, 235, 0.7)', // Cor da categoria 2
+                        'rgba(255, 206, 86, 0.7)', // Cor da categoria 3
+                        // Adicione mais cores conforme necessário
+                    ],
+                }],
+            },
+        });
 
-    // Defina a altura máxima do gráfico
-    var pieCanvas = document.getElementById('pieChart');
-    pieCanvas.style.maxHeight = '300px';
-</script>
+        // Defina a altura máxima do gráfico
+        var pieCanvas = document.getElementById('pieChart');
+        pieCanvas.style.maxHeight = '300px';
+    </script>
 
 
 @endsection
-
-

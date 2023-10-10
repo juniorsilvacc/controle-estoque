@@ -44,7 +44,9 @@ class CreateProduto extends FormRequest
             ],
             'preco_unitario' => [
                 'required',
-                'numeric',
+            ],
+            'preco_venda' => [
+                'required',
             ],
             'estoque' => [
                 'required',

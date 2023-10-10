@@ -17,7 +17,7 @@ return new class() extends Migration {
             $table->string('email')->unique()->nullable();
             $table->string('telefone');
             $table->string('endereco')->nullable();
-            $table->string('cnpj', 14)->unique();
+            $table->string('cnpj', 18)->unique();
             $table->string('tipo'); // Enum: fabricante, distribuidor, atacadista
             $table->text('observacoes')->nullable();
 

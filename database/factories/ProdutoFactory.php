@@ -30,6 +30,7 @@ class ProdutoFactory extends Factory
             'descricao' => fake()->sentence,
             'unidade_medida' => fake()->randomElement($statusEnum),
             'preco_unitario' => fake()->randomFloat(2, 1, 500),
+            'preco_venda' => fake()->randomFloat(2, 500, 1000),
             'estoque' => fake()->numberBetween(1, 100),
             'image' => fake()->imageUrl(400, 400, 'produtos'),
             'data_fabricacao' => $dataFabricacao,

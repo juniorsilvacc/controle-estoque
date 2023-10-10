@@ -19,12 +19,12 @@
 <div class="col-md-4 form-group">
     <label for="telefone">Telefone (*)</label>
     <input type="text" class="form-control" id="telefone" name="telefone"
-        value="{{ $fornecedor->telefone ?? old('telefone') }}">
+        value="{{ $fornecedor->telefone ?? old('telefone') }}" maxlength="15">
 </div>
 <div class="col-md-4 form-group">
     <label for="cnpj">CNPJ (*)</label>
     <input type="text" class="form-control" id="cnpj" name="cnpj"
-        value="{{ $fornecedor->cnpj ?? old('cnpj') }}">
+        value="{{ $fornecedor->cnpj ?? old('cnpj') }}" maxlength="18">
 </div>
 <div class="col-md-5 form-group">
     <label for="endereco">Endereço</label>
@@ -45,3 +45,33 @@
     <input type="text" class="form-control" id="observacoes" name="observacoes"
         value="{{ $fornecedor->observacoes ?? old('observacoes') }}">
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var cnpjInput = document.getElementById("cnpj");
+
+        cnpjInput.addEventListener("input", function () {
+            var cnpj = this.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+
+            if (cnpj.length === 14) {
+                cnpj = cnpj.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/, '$1.$2.$3/$4-$5');
+                this.value = cnpj; // Atualiza o valor do input formatado
+            }
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var telefoneInput = document.getElementById("telefone");
+
+        telefoneInput.addEventListener("input", function () {
+            var telefone = this.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+
+            if (telefone.length === 11) {
+                telefone = telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+                this.value = telefone; // Atualiza o valor do input formatado
+            }
+        });
+    });
+</script>

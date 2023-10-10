@@ -43,9 +43,13 @@ class UpdateProduto extends FormRequest
                 'string',
             ],
             'preco_unitario' => [
-                'numeric',
+                'required',
+            ],
+            'preco_venda' => [
+                'required',
             ],
             'estoque' => [
+                'required',
                 'numeric',
             ],
             'data_fabricacao' => [

@@ -40,11 +40,11 @@ class CreateFornecedor extends FormRequest
             ],
             'telefone' => [
                 'string',
-                'size:11',
+                'size:15',
             ],
             'cnpj' => [
                 'required',
-                'size:14',
+                'size:18',
                 'string',
                 'unique:fornecedores,cnpj,cnpj',
             ],

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Categoria;
 use App\Models\Produto;
 use App\Repositories\EstatisticaRepositoryInterface;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,11 @@ class HomeController extends Controller
 
         $produtosEstoqueMinimo = Produto::where('estoque', '<=', 5)->get();
         $produtosEstoqueZero = Produto::where('estoque', '=', 0)->count();
+
+        // Calculo
+        $estoqueTotal = Produto::sum('estoque');
+        $precoTotalInvestimento = Produto::sum(DB::raw('preco_unitario * estoque'));
+        $precoTotalRetornoPrevisto = Produto::sum(DB::raw('preco_venda * estoque'));
 
         // Gráfico da quantidade de estoque
         $produtos = Produto::all();
@@ -44,7 +50,9 @@ class HomeController extends Controller
             'quantidades',
             'data',
             'produtosEstoqueMinimo',
-            'produtosEstoqueZero'
+            'produtosEstoqueZero',
+            'precoTotalInvestimento',
+            'precoTotalRetornoPrevisto'
         ));
     }
 }

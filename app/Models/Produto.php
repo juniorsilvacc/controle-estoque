@@ -15,6 +15,7 @@ class Produto extends Model
         'descricao',
         'unidade_medida',
         'preco_unitario',
+        'preco_venda',
         'estoque',
         'image',
         'data_fabricacao',
@@ -23,6 +24,16 @@ class Produto extends Model
         'categoria_id',
         'user_id',
     ];
+
+    public function setPrecoUnitarioAttribute($value)
+    {
+        $this->attributes['preco_unitario'] = str_replace(',', '.', str_replace('.', '', str_replace('R$', '', $value)));
+    }
+
+    public function setPrecoVendaAttribute($value)
+    {
+        $this->attributes['preco_venda'] = str_replace(',', '.', str_replace('.', '', str_replace('R$', '', $value)));
+    }
 
     public function user()
     {
