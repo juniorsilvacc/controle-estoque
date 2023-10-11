@@ -58,14 +58,6 @@ form .form-select option {
     align-items: flex-end;
 }
 
-.foto-product {
-    max-width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    box-shadow: 2px 1px 3px rgba(0, 0, 0, 0.5);
-    margin: 5px;
-}
-
 td {
     text-align: center;
     vertical-align: middle;

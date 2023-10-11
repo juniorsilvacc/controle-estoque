@@ -170,6 +170,7 @@ a.dropdown-item {
     padding: 30px;
     box-shadow: 0 0 2rem 0 rgba(33,37,41,.1);
     width: 800px;
+    margin-bottom: 30px;
 }
 
 .title-details h1 {
@@ -187,7 +188,6 @@ a.dropdown-item {
 
 .informations h6{
     line-height: 40px;
-    border-bottom: 1px solid #ccc;
 }
 
 .form-delete {
@@ -253,6 +253,22 @@ a.dropdown-item {
 
 .custom-file-upload:hover {
     background-color: #ff7f00;
+}
+
+.foto-product {
+    max-width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    box-shadow: 2px 1px 3px rgba(0, 0, 0, 0.5);
+    margin: 5px;
+}
+
+.foto-details-product {
+    width: 250px;
+    height: 250px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 3px;
 }
 
 #file-input {
