@@ -58,6 +58,15 @@ class UpdateProduto extends FormRequest
             'data_validade' => [
                 'date',
             ],
+            'user_id' => [
+                'numeric',
+            ],
+            'fornecedor_id' => [
+                'numeric',
+            ],
+            'categoria_id' => [
+                'numeric',
+            ],
         ];
     }
 }

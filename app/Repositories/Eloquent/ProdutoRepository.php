@@ -2,8 +2,6 @@
 
 namespace App\Repositories\Eloquent;
 
-use App\DTO\CreateProdutoDTO;
-use App\DTO\UpdateProdutoDTO;
 use App\Models\Produto;
 use App\Repositories\ProdutoRepositoryInterface;
 
@@ -46,24 +44,22 @@ class ProdutoRepository implements ProdutoRepositoryInterface
         return $produtos;
     }
 
-    public function create(CreateProdutoDTO $dto)
+    public function create(array $data)
     {
-        $produto = $this->model->create((array) $dto);
+        $produto = $this->model->create($data);
 
-        return $produto->toArray();
+        return $produto;
     }
 
-    public function update(UpdateProdutoDTO $dto)
+    public function update(string $id, array $data)
     {
-        if (!$produto = $this->model->find($dto->id)) {
+        if (!$produto = $this->findById($id)) {
             return null;
         }
 
-        $produto->update(
-            (array) $dto
-        );
+        $produto->update($data);
 
-        return (object) $produto->toArray();
+        return $produto;
     }
 
     public function delete(string $id)

@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\User;
 
-use App\DTO\CreateProdutoDTO;
-use App\DTO\UpdateProdutoDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateProduto;
 use App\Http\Requests\UpdateProduto;
+use App\Http\Requests\UploadImagem;
 use App\Models\Categoria;
 use App\Models\Fornecedor;
-use App\Models\Produto;
 use App\Services\ProdutoService;
+use App\Services\UploadFile;
 use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
@@ -41,23 +40,22 @@ class ProdutoController extends Controller
 
     public function createAction(CreateProduto $request)
     {
+        $produtoData = $request->validated();
         $userId = auth()->id();
 
-        if ($userId) {
-            $produtoData = CreateProdutoDTO::makeFromRequest($request);
-            $produtoData->user_id = $userId;
+        if (!$userId) {
+            return redirect()
+                ->back()
+                ->with('alert', 'Você não está logado.');
+        }
 
-            $produto = $this->service->create($produtoData);
+        $produtoData['user_id'] = $userId;
+        $produto = $this->service->create($produtoData);
 
-            if ($produto) {
-                return redirect()
-                    ->route('produtos.lista-produtos')
-                    ->with('success', 'Cadastrado com sucesso');
-            } else {
-                return redirect()
-                    ->back()
-                    ->with('alert', 'Você não está logado.');
-            }
+        if ($produto) {
+            return redirect()
+                ->route('produtos.lista-produtos')
+                ->with('success', 'Cadastrado com sucesso');
         }
     }
 
@@ -74,35 +72,23 @@ class ProdutoController extends Controller
         return view('user.produtos.edit', compact('produto', 'categorias', 'fornecedores', 'unidadesMedidas'));
     }
 
-    public function editAction(UpdateProduto $request, Produto $produto)
+    public function editAction(UpdateProduto $request, $id)
     {
+        $data = $request->all();
         $userId = auth()->id();
 
-        if ($userId) {
-            $produtoData = UpdateProdutoDTO::makeFromRequest($request);
-            $produtoData->user_id = $userId;
-
-            $produto = $this->service->update($produtoData);
-
-            if ($produto) {
-                return redirect()
-                    ->route('produtos.lista-produtos')
-                    ->with('success', 'Atualizado com sucesso');
-            } else {
-                return redirect()
-                    ->back()
-                    ->with('alert', 'Você não está logado.');
-            }
+        if (!$userId) {
+            return redirect()
+                ->back()
+                ->with('alert', 'Você não está logado.');
         }
-    }
 
-    public function deleteAction(string $id)
-    {
-        $this->service->delete($id);
+        $data['user_id'] = $userId;
+        if (!$this->service->update($id, $data)) {
+            return back();
+        }
 
-        return redirect()
-                ->route('produtos.lista-produtos')
-                ->with('success', 'Deletado com sucesso');
+        return redirect()->route('produtos.lista-produtos');
     }
 
     public function details(string $id)
@@ -112,5 +98,27 @@ class ProdutoController extends Controller
         }
 
         return view('user.produtos.detalhes-produtos', compact('produto'));
+    }
+
+    public function image($id)
+    {
+        if (!$produto = $this->service->findById($id)) {
+            return back();
+        }
+
+        return view('user.produtos.image', compact('produto'));
+    }
+
+    public function uploadAction(UploadImagem $request, UploadFile $upload, $id)
+    {
+        $path = $upload->store($request->image, 'produtos');
+
+        if (!$this->service->update($id, ['image' => $path])) {
+            return back();
+        }
+
+        return redirect()
+                ->route('produtos.lista-produtos')
+                ->with('success', 'Upload com sucesso');
     }
 }

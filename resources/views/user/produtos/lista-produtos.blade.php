@@ -24,7 +24,7 @@
             <table class="table table-striped table-hover w-100 text-center">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">Imagem</th>
                         <th scope="col">Nome</th>
                         <th scope="col">Cód. Referência</th>
                         <th scope="col">Un. Médida</th>
@@ -38,7 +38,10 @@
 
                     @forelse ($produtos as $produto)
                         <tr>
-                            <th scope="row">{{ $produto->id }}</th>
+                            <td>
+                                <img src="{{ $produto->image ? asset("storage/{$produto->image}") : asset('img/sem-foto.jpg') }}"
+                                    alt="{{ $produto->nome }}" class="foto-product">
+                            </td>
                             <td>{{ $produto->nome }}</td>
                             <td>{{ $produto->cod_referencia }}</td>
                             <td>{{ $produto->unidade_medida }}</td>
@@ -47,7 +50,7 @@
                             <td>
                                 <a href=" {{ route('produtos.edit', $produto->id) }} " class="btn btn-warning"><i
                                         class="fa-solid fa-pen-to-square"></i></a>
-                                <a href=" {{ route('produtos.edit', $produto->id) }} " class="btn btn-secondary"><i
+                                <a href=" {{ route('produtos.image', $produto->id) }} " class="btn btn-secondary"><i
                                         class="fa-solid fa-image"></i></a>
                                 <a href=" {{ route('produtos.detalhes-produtos', $produto->id) }} " class="btn btn-info"><i
                                         class="fa-solid fa-circle-info"></i></a>

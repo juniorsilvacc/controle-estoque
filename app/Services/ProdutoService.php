@@ -2,8 +2,6 @@
 
 namespace App\Services;
 
-use App\DTO\CreateProdutoDTO;
-use App\DTO\UpdateProdutoDTO;
 use App\Repositories\ProdutoRepositoryInterface;
 
 class ProdutoService
@@ -37,16 +35,16 @@ class ProdutoService
         return $produtos;
     }
 
-    public function create(CreateProdutoDTO $dto)
+    public function create(array $data)
     {
-        $produto = $this->repository->create($dto);
+        $produto = $this->repository->create($data);
 
         return $produto;
     }
 
-    public function update(UpdateProdutoDTO $dto)
+    public function update(string $id, array $data)
     {
-        return $this->repository->update($dto);
+        return $this->repository->update($id, $data);
     }
 
     public function delete(string $id)

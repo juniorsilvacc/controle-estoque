@@ -2,9 +2,6 @@
 
 namespace App\Repositories;
 
-use App\DTO\CreateProdutoDTO;
-use App\DTO\UpdateProdutoDTO;
-
 interface ProdutoRepositoryInterface
 {
     public function findByName(string $nome);
@@ -13,9 +10,9 @@ interface ProdutoRepositoryInterface
 
     public function getAll();
 
-    public function create(CreateProdutoDTO $dto);
+    public function create(array $data);
 
-    public function update(UpdateProdutoDTO $dto);
+    public function update(string $id, array $data);
 
     public function delete(string $id);
 }

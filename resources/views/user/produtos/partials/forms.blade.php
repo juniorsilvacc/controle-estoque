@@ -21,9 +21,6 @@
     <input type="number" class="form-control" id="cod_referencia" name="cod_referencia"
         value="{{ $produto->cod_referencia ?? old('cod_referencia') }}">
 </div>
-
-
-
 <div class="col-md-2 form-group ">
     <label for="preco_unitario">Preço Unitário (*)</label>
     <input type="text" class="form-control" id="preco1" name="preco_unitario"
@@ -34,9 +31,6 @@
     <input type="text" class="form-control" id="preco2" name="preco_venda"
         value="{{ $produto->preco_unitario ?? old('preco_venda') }}">
 </div>
-
-
-
 <div class="col-md-2 form-group ">
     <label for="estoque">Estoque (*)</label>
     <input type="number" class="form-control" id="estoque" name="estoque"
@@ -101,5 +95,22 @@
             var numericValue = parseFloat(value.replace(/\D/g, '')) / 100;
             return numberFormat.format(numericValue);
         }
+    });
+</script>
+
+<script>
+    document.getElementById("cod_referencia").addEventListener("input", function() {
+        var maxLength = 8; // Defina o número máximo de dígitos desejado
+
+        // Remove todos os caracteres não numéricos do valor
+        var numericValue = this.value.replace(/[^0-9]/g, '');
+
+        // Limita o número de dígitos
+        if (numericValue.length > maxLength) {
+            numericValue = numericValue.slice(0, maxLength);
+        }
+
+        // Atualiza o valor do campo de entrada
+        this.value = numericValue;
     });
 </script>
