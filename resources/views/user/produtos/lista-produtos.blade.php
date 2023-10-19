@@ -27,7 +27,7 @@
                         <th scope="col">Imagem</th>
                         <th scope="col">Nome</th>
                         <th scope="col">Cód. Referência</th>
-                        <th scope="col">Un. Médida</th>
+                        <th scope="col">Unid. Médida</th>
                         <th scope="col">Preço Uni.</th>
                         <th scope="col">Estoque</th>
 

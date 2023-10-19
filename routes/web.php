@@ -4,15 +4,15 @@ use App\Http\Controllers\User\CategoriaController;
 use App\Http\Controllers\User\ClienteController;
 use App\Http\Controllers\User\FornecedorController;
 use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\PerfilController;
 use App\Http\Controllers\User\ProdutoController;
-use App\Http\Controllers\User\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
     // Perfil
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::put('/perfil/{id}', [PerfilController::class, 'editAction'])->name('perfil.editAction');
+    Route::get('/perfil/{id}/atualizar', [PerfilController::class, 'edit'])->name('perfil.edit-usuario-perfil');
+    Route::get('/perfil/{id}/detalhes', [PerfilController::class, 'details'])->name('perfil.detalhes-usuario-perfil');
 
     // Home
     Route::get('/', [HomeController::class, 'index'])->name('home.index');
