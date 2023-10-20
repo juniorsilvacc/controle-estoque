@@ -20,8 +20,13 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'nome_usuario',
+        'primeiro_nome',
+        'ultimo_nome',
+        'telefone',
         'email',
+        'data_nascimento',
+        'image',
         'password',
     ];
 
@@ -44,6 +49,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function setTelefoneAttribute($value)
+    {
+        $this->attributes['telefone'] =
+            str_replace('(', '',
+                str_replace(')', '',
+                    str_replace(' ', '',
+                        str_replace('-', '', $value))));
+    }
 
     public function clientes()
     {

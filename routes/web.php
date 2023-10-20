@@ -12,6 +12,7 @@ Route::middleware('auth')->group(function () {
     // Perfil
     Route::put('/perfil/{id}', [PerfilController::class, 'editAction'])->name('perfil.editAction');
     Route::get('/perfil/{id}/atualizar', [PerfilController::class, 'edit'])->name('perfil.edit-usuario-perfil');
+
     Route::get('/perfil/{id}/detalhes', [PerfilController::class, 'details'])->name('perfil.detalhes-usuario-perfil');
 
     // Home

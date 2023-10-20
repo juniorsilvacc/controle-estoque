@@ -48,30 +48,7 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        var cnpjInput = document.getElementById("cnpj");
-
-        cnpjInput.addEventListener("input", function () {
-            var cnpj = this.value.replace(/\D/g, ''); // Remove caracteres não numéricos
-
-            if (cnpj.length === 14) {
-                cnpj = cnpj.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/, '$1.$2.$3/$4-$5');
-                this.value = cnpj; // Atualiza o valor do input formatado
-            }
-        });
-    });
-</script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var telefoneInput = document.getElementById("telefone");
-
-        telefoneInput.addEventListener("input", function () {
-            var telefone = this.value.replace(/\D/g, ''); // Remove caracteres não numéricos
-
-            if (telefone.length === 11) {
-                telefone = telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
-                this.value = telefone; // Atualiza o valor do input formatado
-            }
-        });
+        formatarTelefone("telefone");
+        formatarCnpj("cnpj");
     });
 </script>

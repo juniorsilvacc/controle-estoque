@@ -65,6 +65,25 @@ td {
     padding: 10px;
 }
 
+/* Image Perfil Upload */
+.image-container {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .image-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 #success-message {
     display: none;
     position: fixed;

@@ -56,6 +56,9 @@
     {{-- ChartJ JS --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    {{-- JS Maskara --}}
+    <script src="{{ asset('js/mask-input.js') }}"></script>
+
     @yield('script')
 </body>
 

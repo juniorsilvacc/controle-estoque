@@ -23,6 +23,23 @@ class Fornecedor extends Model
         'user_id',
     ];
 
+    public function setTelefoneAttribute($value)
+    {
+        $this->attributes['telefone'] =
+            str_replace('(', '',
+                str_replace(')', '',
+                    str_replace(' ', '',
+                        str_replace('-', '', $value))));
+    }
+
+    public function setCnpjAttribute($value)
+    {
+        $this->attributes['cnpj'] =
+            str_replace('.', '',
+                str_replace('/', '',
+                    str_replace('-', '', $value)));
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

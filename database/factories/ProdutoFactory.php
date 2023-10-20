@@ -32,7 +32,6 @@ class ProdutoFactory extends Factory
             'preco_unitario' => fake()->randomFloat(2, 1, 500),
             'preco_venda' => fake()->randomFloat(2, 500, 1000),
             'estoque' => fake()->numberBetween(1, 100),
-            'image' => 'img/sem-foto.jpg',
             'data_fabricacao' => $dataFabricacao,
             'data_validade' => $dataValidade,
             'fornecedor_id' => Fornecedor::all()->random(),

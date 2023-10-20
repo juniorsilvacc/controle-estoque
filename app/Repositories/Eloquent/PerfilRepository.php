@@ -28,7 +28,7 @@ class PerfilRepository implements PerfilRepositoryInterface
 
     public function update(string $id, array $data)
     {
-        if (!$user = $this->findById($id)) {
+        if (!$user = $this->details($id)) {
             return null;
         }
 

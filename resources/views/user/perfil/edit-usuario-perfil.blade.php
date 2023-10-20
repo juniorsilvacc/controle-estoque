@@ -15,10 +15,13 @@
                         <form method="POST" action="" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body align-items-center">
-                                <img src="{{ $usuario->image ? asset("storage/{$usuario->image}") : asset('img/sem-usuario.png') }}"
-                                    class="img-fluid rounded-circle my-3" id="image-preview" alt="{{ $usuario->name }}">
 
-                                <span>JPG ou PNG e menor que 5 MB</span>
+                                <div class="image-container">
+                                    <img src="{{ $usuario->image ? asset("storage/{$usuario->image}") : asset('img/sem-usuario.png') }}"
+                                        id="image-preview" alt="{{ $usuario->name }}">
+                                </div>
+
+                                <span class="mt-2">JPG ou PNG e menor que 5 MB</span>
 
                                 <input type="file" class="form-control-file mt-3" name="image" id="image"
                                     onchange="showUploadButton(this)">
@@ -44,9 +47,8 @@
                             @method('PUT')
                             @include('user.perfil.partials.forms')
 
+                            <button type="submit" class="btn btn btn-primary col-md-3">Atualizar</button>
                         </form>
-
-                        <button type="submit" class="btn btn btn-primary col-md-3">Atualizar</button>
                     </div>
                 </div>
             </div>
