@@ -12,10 +12,12 @@
                         Foto de Perfil
                     </div>
                     <div class="card-body align-items-center">
-                        <form method="POST" action="" enctype="multipart/form-data">
-                            @csrf
-                            <div class="card-body align-items-center">
+                        <form action="{{ route('perfil.uploadAction', $usuario->id) }}" method="POST"
+                            enctype="multipart/form-data">
 
+                            @csrf
+
+                            <div class="card-body align-items-center">
                                 <div class="image-container">
                                     <img src="{{ $usuario->image ? asset("storage/{$usuario->image}") : asset('img/sem-usuario.png') }}"
                                         id="image-preview" alt="{{ $usuario->name }}">
@@ -26,10 +28,10 @@
                                 <input type="file" class="form-control-file mt-3" name="image" id="image"
                                     onchange="showUploadButton(this)">
                                 <div id="upload-button" style="display: none;">
-                                    <button type="button" class="btn btn-primary">Enviar Arquivo</button>
+                                    <button type="submit" class="btn btn-primary">Enviar Arquivo</button>
                                 </div>
-
                             </div>
+
                         </form>
                     </div>
                 </div>

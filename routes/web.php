@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
     // Perfil
+    Route::post('/perfil/upload', [PerfilController::class, 'uploadAction'])->name('perfil.uploadAction');
+
     Route::put('/perfil/{id}', [PerfilController::class, 'editAction'])->name('perfil.editAction');
     Route::get('/perfil/{id}/atualizar', [PerfilController::class, 'edit'])->name('perfil.edit-usuario-perfil');
 

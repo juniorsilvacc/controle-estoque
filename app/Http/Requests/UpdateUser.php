@@ -23,31 +23,37 @@ class UpdateUser extends FormRequest
     {
         return [
             'nome_usuario' => [
+                'required',
                 'string',
                 'min:3',
                 'max:20',
                 "unique:users,nome_usuario,{$this->id},id",
             ],
             'primeiro_nome' => [
+                'required',
                 'string',
                 'min:3',
                 'max:15',
             ],
             'ultimo_nome' => [
+                'required',
                 'string',
                 'min:3',
                 'max:15',
             ],
             'telefone' => [
+                'required',
                 'string',
                 'max:20',
             ],
             'email' => [
+                'required',
                 'email',
                 'max:20',
                 "unique:users,email,{$this->id},id",
             ],
             'data_nascimento' => [
+                'required',
                 'date',
             ],
         ];

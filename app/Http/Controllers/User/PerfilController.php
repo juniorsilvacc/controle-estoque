@@ -4,7 +4,9 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateUser;
+use App\Http\Requests\UploadImagemPerfil;
 use App\Services\PerfilService;
+use App\Services\UploadFile;
 
 class PerfilController extends Controller
 {
@@ -50,6 +52,31 @@ class PerfilController extends Controller
             return back();
         }
 
-        return redirect()->route('perfil.detalhes-usuario-perfil', $userId);
+        return redirect()
+                ->route('perfil.detalhes-usuario-perfil', $userId)
+                ->with('success', 'Dados atualizados com sucesso');
+    }
+
+    public function uploadAction(UploadImagemPerfil $request, UploadFile $upload)
+    {
+        $data = $request->all();
+        $userId = auth()->id();
+
+        if (!$userId) {
+            return redirect()
+                ->back()
+                ->with('alert', 'Você não está logado.');
+        }
+
+        $data['user_id'] = $userId;
+        $path = $upload->store($request->image, 'usuarios');
+
+        if (!$this->service->update($userId, ['image' => $path])) {
+            return back();
+        }
+
+        return redirect()
+                ->route('perfil.detalhes-usuario-perfil', $userId)
+                ->with('success', 'Upload feito com sucesso');
     }
 }
