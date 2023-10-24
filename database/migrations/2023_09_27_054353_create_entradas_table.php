@@ -13,7 +13,6 @@ return new class() extends Migration {
         Schema::create('entradas', function (Blueprint $table) {
             $table->id();
             $table->integer('quantidade');
-            $table->decimal('preco_unitario', 10, 2);
             $table->date('data_entrada');
             $table->text('observacoes')->nullable();
 

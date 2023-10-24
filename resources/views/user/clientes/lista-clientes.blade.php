@@ -40,7 +40,7 @@
                             <td>
 
                                 <a href=" {{ route('clientes.edit', $cliente->id) }} " class="btn btn-warning"><i
-                                    class="fa-solid fa-pen-to-square"></i></a>
+                                        class="fa-solid fa-pen-to-square"></i></a>
 
                                 <a href=" {{ route('clientes.detalhes-clientes', $cliente->id) }} " class="btn btn-info"><i
                                         class="fa-solid fa-circle-info"></i></a>

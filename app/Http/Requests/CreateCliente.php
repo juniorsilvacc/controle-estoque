@@ -29,6 +29,7 @@ class CreateCliente extends FormRequest
                 'string',
             ],
             'email' => [
+                'nullable',
                 'email',
             ],
         ];

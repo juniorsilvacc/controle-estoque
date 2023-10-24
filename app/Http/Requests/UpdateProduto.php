@@ -53,9 +53,11 @@ class UpdateProduto extends FormRequest
                 'numeric',
             ],
             'data_fabricacao' => [
+                'nullable',
                 'date',
             ],
             'data_validade' => [
+                'nullable',
                 'date',
             ],
             'user_id' => [

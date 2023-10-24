@@ -46,8 +46,8 @@
                                 <a href=" {{ route('fornecedores.edit', $fornecedor->id) }} " class="btn btn-warning"><i
                                         class="fa-solid fa-pen-to-square"></i></a>
 
-                                <a href=" {{ route('fornecedores.detalhes-fornecedores', $fornecedor->id) }} " class="btn btn-info"><i
-                                        class="fa-solid fa-circle-info"></i></a>
+                                <a href=" {{ route('fornecedores.detalhes-fornecedores', $fornecedor->id) }} "
+                                    class="btn btn-info"><i class="fa-solid fa-circle-info"></i></a>
                             </td>
                         </tr>
                     @empty

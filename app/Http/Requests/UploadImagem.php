@@ -26,6 +26,7 @@ class UploadImagem extends FormRequest
                 'required',
                 'image',
                 'max:1024',
+                'mimes:png,jpg',
             ],
         ];
     }

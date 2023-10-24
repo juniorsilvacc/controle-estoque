@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\User\CategoriaController;
 use App\Http\Controllers\User\ClienteController;
+use App\Http\Controllers\User\EntradaController;
 use App\Http\Controllers\User\FornecedorController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\PerfilController;
@@ -9,6 +10,10 @@ use App\Http\Controllers\User\ProdutoController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
+    // Entrada de Produtos
+    Route::post('/cadastrar/entrada', [EntradaController::class, 'entryAction'])->name('entrada.entryAction');
+    Route::get('/entrada/produtos', [EntradaController::class, 'entry'])->name('entrada.entrada-produtos');
+
     // Perfil
     Route::post('/perfil/upload', [PerfilController::class, 'uploadAction'])->name('perfil.uploadAction');
 

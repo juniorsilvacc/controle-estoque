@@ -49,4 +49,9 @@ class Fornecedor extends Model
     {
         return $this->hasMany(Produto::class);
     }
+
+    public function entradas()
+    {
+        return $this->hasMany(Entrada::class);
+    }
 }

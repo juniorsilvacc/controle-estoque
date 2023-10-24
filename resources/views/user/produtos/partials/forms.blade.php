@@ -18,8 +18,8 @@
 </div>
 <div class="col-md-3 form-group ">
     <label for="cod_referencia">Código Referência (*)</label>
-    <input type="number" class="form-control" id="cod_referencia" name="cod_referencia"
-        value="{{ $produto->cod_referencia ?? old('cod_referencia') }}">
+    <input type="text" class="form-control" id="cod_referencia" name="cod_referencia"
+        value="{{ $produto->cod_referencia ?? old('cod_referencia') }}" maxlength="8">
 </div>
 <div class="col-md-2 form-group ">
     <label for="preco_unitario">Preço Unitário (*)</label>
@@ -62,55 +62,19 @@
     </select>
 </div>
 <div class="col-md-2 form-group ">
-    <label for="data_fabricacao">Data Fabricação (*)</label>
+    <label for="data_fabricacao">Data Fabricação</label>
     <input type="date" class="form-control" id="data_fabricacao" name="data_fabricacao"
         value="{{ $produto->data_fabricacao ?? old('data_fabricacao') }}">
 </div>
 <div class="col-md-2 form-group ">
-    <label for="data_validade">Data Validade (*)</label>
+    <label for="data_validade">Data Validade</label>
     <input type="date" class="form-control" id="data_validade" name="data_validade"
         value="{{ $produto->data_validade ?? old('data_validade') }}">
 </div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        var precoInput1 = document.getElementById("preco1");
-        var precoInput2 = document.getElementById("preco2");
-
-        var numberFormat = new Intl.NumberFormat('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-        });
-
-        precoInput1.addEventListener("input", function() {
-            this.value = formatPrice(this.value);
-        });
-
-        precoInput2.addEventListener("input", function() {
-            this.value = formatPrice(this.value);
-        });
-
-        function formatPrice(value) {
-            // Remove caracteres não numéricos
-            var numericValue = parseFloat(value.replace(/\D/g, '')) / 100;
-            return numberFormat.format(numericValue);
-        }
-    });
-</script>
-
-<script>
-    document.getElementById("cod_referencia").addEventListener("input", function() {
-        var maxLength = 8; // Defina o número máximo de dígitos desejado
-
-        // Remove todos os caracteres não numéricos do valor
-        var numericValue = this.value.replace(/[^0-9]/g, '');
-
-        // Limita o número de dígitos
-        if (numericValue.length > maxLength) {
-            numericValue = numericValue.slice(0, maxLength);
-        }
-
-        // Atualiza o valor do campo de entrada
-        this.value = numericValue;
+        formatarCampoPreco("preco1");
+        formatarCampoPreco("preco2");
     });
 </script>

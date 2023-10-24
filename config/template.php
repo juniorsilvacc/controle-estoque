@@ -26,7 +26,7 @@ return [
     'menusMovement' => [
         [
             'name' => 'Entrada',
-            'url' => '#',
+            'url' => '/entrada/produtos',
             'icon' => 'fas fa-arrow-circle-right',
         ],
         [

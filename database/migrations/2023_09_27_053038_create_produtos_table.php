@@ -16,7 +16,7 @@ return new class() extends Migration {
             $table->string('cod_referencia')->unique();
             $table->text('descricao')->nullable();
             $table->string('unidade_medida'); // Enum: UN, PC, LT, KG
-            $table->string('preco_unitario', 10, 2);
+            $table->string('preco_unitario', 10, 2)->default(0.00);
             $table->string('preco_venda', 10, 2);
             $table->integer('estoque')->default(1);
             $table->string('image')->nullable();

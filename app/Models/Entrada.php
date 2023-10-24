@@ -9,9 +9,10 @@ class Entrada extends Model
 {
     use HasFactory;
 
+    protected $table = 'entradas';
+
     protected $fillable = [
         'quantidade',
-        'preco_unitario',
         'data_entrada',
         'observacoes',
         'produto_id',
@@ -21,5 +22,10 @@ class Entrada extends Model
     public function produto()
     {
         return $this->belongsTo(Produto::class);
+    }
+
+    public function fornecedor()
+    {
+        return $this->belongsTo(Fornecedor::class);
     }
 }

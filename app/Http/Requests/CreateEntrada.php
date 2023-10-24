@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UploadImagemPerfil extends FormRequest
+class CreateEntrada extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +22,21 @@ class UploadImagemPerfil extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => [
+            'quantidade' => [
                 'required',
-                'image',
-                'max:1024',
-                'mimes:png,jpg',
+                'min: 1',
+            ],
+            'data_entrada' => [
+                'date',
+            ],
+            'observacoes' => [
+                'nullable',
+            ],
+            'fornecedor_id' => [
+                'required',
+            ],
+            'produto_id' => [
+                'required',
             ],
         ];
     }

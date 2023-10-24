@@ -6,10 +6,12 @@ use App\Repositories\CategoriaRepositoryInterface;
 use App\Repositories\ClienteRepositoryInterface;
 use App\Repositories\Eloquent\CategoriaRepository;
 use App\Repositories\Eloquent\ClienteRepository;
+use App\Repositories\Eloquent\EntradaRepository;
 use App\Repositories\Eloquent\EstatisticaRepository;
 use App\Repositories\Eloquent\FornecedorRepository;
 use App\Repositories\Eloquent\PerfilRepository;
 use App\Repositories\Eloquent\ProdutoRepository;
+use App\Repositories\EntradaRepositoryInterface;
 use App\Repositories\EstatisticaRepositoryInterface;
 use App\Repositories\FornecedorRepositoryInterface;
 use App\Repositories\PerfilRepositoryInterface;
@@ -52,6 +54,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             PerfilRepositoryInterface::class,
             PerfilRepository::class,
+        );
+
+        $this->app->singleton(
+            EntradaRepositoryInterface::class,
+            EntradaRepository::class,
         );
     }
 

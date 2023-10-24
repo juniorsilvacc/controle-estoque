@@ -25,3 +25,22 @@ function formatarCnpj(inputId) {
         });
     }
 }
+
+function formatarCampoPreco(inputId) {
+    var input = document.getElementById(inputId);
+
+    var numberFormat = new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+    });
+
+    input.addEventListener("input", function() {
+        this.value = formatPrice(this.value);
+    });
+
+    function formatPrice(value) {
+        // Remove caracteres não numéricos
+        var numericValue = parseFloat(value.replace(/\D/g, '')) / 100;
+        return numberFormat.format(numericValue);
+    }
+}

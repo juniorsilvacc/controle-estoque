@@ -40,6 +40,7 @@ class UpdateFornecedor extends FormRequest
                 "unique:fornecedores,email,{$this->id},id",
             ],
             'telefone' => [
+                'required',
                 'string',
                 'size:11',
             ],
