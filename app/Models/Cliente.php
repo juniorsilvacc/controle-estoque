@@ -21,4 +21,9 @@ class Cliente extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function saidas()
+    {
+        return $this->hasMany(Saida::class);
+    }
 }

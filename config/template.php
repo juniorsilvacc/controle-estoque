@@ -31,7 +31,7 @@ return [
         ],
         [
             'name' => 'Saída',
-            'url' => '#',
+            'url' => '/saida/produtos',
             'icon' => 'fas fa-arrow-circle-left',
         ],
     ],

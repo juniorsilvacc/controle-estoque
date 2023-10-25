@@ -17,6 +17,7 @@ return new class() extends Migration {
             $table->text('observacoes')->nullable();
 
             $table->foreignId('produto_id')->constrained('produtos');
+            $table->foreignId('cliente_id')->constrained('clientes');
 
             $table->timestamps();
         });
@@ -29,6 +30,7 @@ return new class() extends Migration {
     {
         Schema::table('saidas', function (Blueprint $table) {
             $table->dropForeign(['produto_id']);
+            $table->dropForeign(['cliente_id']);
         });
 
         Schema::dropIfExists('saidas');

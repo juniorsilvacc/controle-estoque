@@ -4,7 +4,6 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateEntrada;
-use App\Models\Entrada;
 use App\Models\Fornecedor;
 use App\Models\Produto;
 use App\Services\EntradaService;
@@ -14,7 +13,6 @@ class EntradaController extends Controller
 {
     private $service;
     private $produtoservice;
-    private $fornecedorService;
 
     public function __construct(
         EntradaService $service,

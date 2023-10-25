@@ -11,11 +11,13 @@ use App\Repositories\Eloquent\EstatisticaRepository;
 use App\Repositories\Eloquent\FornecedorRepository;
 use App\Repositories\Eloquent\PerfilRepository;
 use App\Repositories\Eloquent\ProdutoRepository;
+use App\Repositories\Eloquent\SaidaRepository;
 use App\Repositories\EntradaRepositoryInterface;
 use App\Repositories\EstatisticaRepositoryInterface;
 use App\Repositories\FornecedorRepositoryInterface;
 use App\Repositories\PerfilRepositoryInterface;
 use App\Repositories\ProdutoRepositoryInterface;
+use App\Repositories\SaidaRepositoryInterface;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
@@ -59,6 +61,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             EntradaRepositoryInterface::class,
             EntradaRepository::class,
+        );
+
+        $this->app->singleton(
+            SaidaRepositoryInterface::class,
+            SaidaRepository::class,
         );
     }
 

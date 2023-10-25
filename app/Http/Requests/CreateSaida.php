@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateEntrada extends FormRequest
+class CreateSaida extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,14 +26,14 @@ class CreateEntrada extends FormRequest
                 'required',
                 'min: 1',
             ],
-            'data_entrada' => [
+            'data_saida' => [
                 'required',
                 'date',
             ],
             'observacoes' => [
                 'nullable',
             ],
-            'fornecedor_id' => [
+            'cliente_id' => [
                 'required',
             ],
             'produto_id' => [

@@ -7,9 +7,14 @@ use App\Http\Controllers\User\FornecedorController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\PerfilController;
 use App\Http\Controllers\User\ProdutoController;
+use App\Http\Controllers\User\SaidaController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
+    // Saida de Produtos
+    Route::post('/cadastrar/saida', [SaidaController::class, 'exitAction'])->name('saida.exitAction');
+    Route::get('/saida/produtos', [SaidaController::class, 'exit'])->name('saida.saida-produtos');
+
     // Entrada de Produtos
     Route::post('/cadastrar/entrada', [EntradaController::class, 'entryAction'])->name('entrada.entryAction');
     Route::get('/entrada/produtos', [EntradaController::class, 'entry'])->name('entrada.entrada-produtos');
