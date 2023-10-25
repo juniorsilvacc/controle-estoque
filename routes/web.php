@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\User\CategoriaController;
 use App\Http\Controllers\User\ClienteController;
+use App\Http\Controllers\User\ConsultasController;
 use App\Http\Controllers\User\EntradaController;
 use App\Http\Controllers\User\FornecedorController;
 use App\Http\Controllers\User\HomeController;
@@ -11,6 +12,10 @@ use App\Http\Controllers\User\SaidaController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
+    // Consultas
+    Route::get('/consultas/entradas', [ConsultasController::class, 'entrysQueries'])->name('consultas.consultas-entradas');
+    Route::get('/consultas/saidas', [ConsultasController::class, 'exitQueries'])->name('consultas.consultas-saidas');
+
     // Saida de Produtos
     Route::post('/cadastrar/saida', [SaidaController::class, 'exitAction'])->name('saida.exitAction');
     Route::get('/saida/produtos', [SaidaController::class, 'exit'])->name('saida.saida-produtos');

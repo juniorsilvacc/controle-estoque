@@ -38,8 +38,13 @@ return [
     'menusAnalysis' => [
         [
             'name' => 'Consultas',
-            'url' => '#',
             'icon' => 'fas fa-chart-line',
+
+            'name_A' => 'Entradas',
+            'name_B' => 'Saídas',
+
+            'url_A' => '/consultas/entradas',
+            'url_B' => '/consultas/saidas',
         ],
     ],
 ];
