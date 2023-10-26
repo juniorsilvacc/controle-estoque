@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Consultas Entrada')
+@section('title', 'Consultas Saída')
 
 @section('content')
     <div class="container-fluid px-4">
         <div class="row g-3 my-2 bg-title-list">
             <div class="col">
-                <h1>Consultas de Entrada</h1>
+                <h1>Consultas de Saída</h1>
             </div>
 
             <div class="col d-flex m-auto justify-content-end bg-button-pag">
@@ -65,7 +65,7 @@
                     @foreach ($registros as $registro)
                         <tr>
                             <td scope="row">{{ $registro->id }}</td>
-                            <td>{{ $registro->data_entrada }}</td>
+                            <td>{{ $registro->data_saida }}</td>
                             <td>
                                 @if ($registro->produto)
                                     {{ $registro->produto->nome }}

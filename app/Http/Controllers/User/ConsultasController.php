@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Entrada;
+use App\Models\Saida;
 use App\Services\ProdutoService;
 use App\Services\SaidaService;
 use Illuminate\Http\Request;
@@ -30,5 +31,8 @@ class ConsultasController extends Controller
 
     public function exitQueries()
     {
+        $registros = Saida::with('produto')->get();
+
+        return view('user.consultas.consultas-saidas', compact('registros'));
     }
 }

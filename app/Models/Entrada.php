@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,6 +19,11 @@ class Entrada extends Model
         'produto_id',
         'fornecedor_id',
     ];
+
+    public function getDataEntradaAttribute($value)
+    {
+        return Carbon::parse($value)->format('d/m/Y');
+    }
 
     public function produto()
     {

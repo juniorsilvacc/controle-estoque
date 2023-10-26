@@ -45,7 +45,17 @@
                             <td>{{ $produto->nome }}</td>
                             <td>{{ $produto->cod_referencia }}</td>
                             <td>{{ $produto->unidade_medida }}</td>
-                            <td>R$ {{ $produto->preco_unitario }}</td>
+                            <td>
+                                @if ($produto->preco_unitario)
+                                    @php
+                                        $precoStr = str_replace(',', '.', $produto->preco_unitario);
+                                        $precoStr = preg_replace('/[^\d.]/', '', $precoStr);
+                                        $preco_unitario = floatval($precoStr);
+                                    @endphp
+
+                                    R$ {{ number_format($preco_unitario, 2, ',', '.') }}
+                                @endif
+                            </td>
                             <td>{{ $produto->estoque }}</td>
                             <td>
                                 <a href=" {{ route('produtos.edit', $produto->id) }} " class="btn btn-warning"><i
