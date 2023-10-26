@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
     // Consultas
+    Route::post('/consultas/entradas/search', [ConsultasController::class, 'search'])->name('consultas.entradasSearch');
     Route::get('/consultas/entradas', [ConsultasController::class, 'entrysQueries'])->name('consultas.consultas-entradas');
+
     Route::get('/consultas/saidas', [ConsultasController::class, 'exitQueries'])->name('consultas.consultas-saidas');
 
     // Saida de Produtos

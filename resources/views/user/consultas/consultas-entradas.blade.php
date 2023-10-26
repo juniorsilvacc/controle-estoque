@@ -62,17 +62,46 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>24/10/2023</td>
-                        <td>Coca-Cola</td>
-                        <td>5</td>
-                        <td>R$ 5,00</td>
-                        <td>R$ 25,00</td>
-                        <td>N/D</td>
-                    </tr>
+                    @foreach ($registros as $registro)
+                        <tr>
+                            <td scope="row">{{ $registro->id }}</td>
+                            <td>{{ $registro->data_entrada }}</td>
+                            <td>
+                                @if ($registro->produto)
+                                    {{ $registro->produto->nome }}
+                                @endif
+                            </td>
+                            <td>{{ $registro->quantidade }}</td>
+                            <td>
+                                @if ($registro->produto)
+                                    R${{ $registro->produto->preco_venda }}
+                                @endif
+                            </td>
+                            <td>
+                                @if ($registro->produto)
+                                    @php
+                                        $precoStr = str_replace(',', '.', $registro->produto->preco_venda); // Substitui vírgula por ponto, se necessário
+                                        $precoStr = preg_replace('/[^\d.]/', '', $precoStr); // Remove todos os caracteres exceto dígitos e ponto decimal
+                                        $precoDeVenda = floatval($precoStr); // Converte para número (float)
+                                        $quantidade = $registro->quantidade; // Supondo que a quantidade está definida
+                                        $total = $precoDeVenda * $quantidade; // Multiplica o preço pelo quantidade
+                                    @endphp
+                                    R$ {{ $total }}
+                                @endif
+                            </td>
+                            <td>
+                                @if ($registro->observacoes)
+                                    {{ $registro->observacoes }}
+                                @else
+                                    N/DA
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
+
+
         </div>
     </div>
 @endsection

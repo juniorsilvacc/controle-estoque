@@ -3,25 +3,29 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Services\EntradaService;
+use App\Models\Entrada;
+use App\Services\ProdutoService;
 use App\Services\SaidaService;
+use Illuminate\Http\Request;
 
 class ConsultasController extends Controller
 {
-    private $entradaService;
+    private $produtoService;
     private $saidaService;
 
     public function __construct(
-        EntradaService $entradaService,
+        ProdutoService $produtoService,
         SaidaService $saidaService,
     ) {
-        $this->service = $entradaService;
-        $this->service = $saidaService;
+        $this->produtoService = $produtoService;
+        $this->produtoService = $produtoService;
     }
 
-    public function entrysQueries()
+    public function entrysQueries(Request $request)
     {
-        return view('user.consultas.consultas-entradas');
+        $registros = Entrada::with('produto')->get();
+
+        return view('user.consultas.consultas-entradas', compact('registros'));
     }
 
     public function exitQueries()
