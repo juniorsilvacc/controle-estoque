@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateProduto;
 use App\Http\Requests\UploadImagem;
 use App\Models\Categoria;
 use App\Models\Fornecedor;
+use App\Models\Produto;
 use App\Services\ProdutoService;
 use App\Services\UploadFile;
 use Illuminate\Http\Request;
@@ -27,6 +28,17 @@ class ProdutoController extends Controller
         $produtos = $this->service->getAll();
 
         return view('user.produtos.lista-produtos', compact('produtos'));
+    }
+
+    public function search(Request $request)
+    {
+        $filters = $request->all();
+
+        $produtos = Produto::where('nome', 'LIKE', "%{$request->search}%")
+            ->orWhere('cod_referencia', '=', "{$request->search}")
+            ->paginate(5);
+
+        return view('user.produtos.lista-produtos', compact('produtos', 'filters'));
     }
 
     public function create()

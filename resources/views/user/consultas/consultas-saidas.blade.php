@@ -26,24 +26,29 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
-                            <!-- Campos de input para o filtro de data -->
-                            <div class="form-group">
-                                <label for="dataInicial">Data Inicial:</label>
-                                <input type="date" class="form-control" id="dataInicial">
+                        <form action="{{ route('saidas.searchExit') }}" method="POST">
+                            @csrf
+
+                            <div class="modal-body">
+                                <!-- Campos de input para o filtro de data -->
+                                <div class="form-group">
+                                    <label for="data_saida">Data Saída:</label>
+                                    <input type="date" class="form-control" id="data_saida" name="data_saida">
+                                </div>
+                                <div class="form-group">
+                                    <label for="data_final">Data Final:</label>
+                                    <input type="date" class="form-control" id="data_final" name="data_final">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="dataFinal">Data Final:</label>
-                                <input type="date" class="form-control" id="dataFinal">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                <button type="submit" class="btn btn-primary">Aplicar Filtro</button>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                            <button type="button" class="btn btn-primary">Aplicar Filtro</button>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -108,6 +113,25 @@
                 </tbody>
             </table>
 
+            @if ($registros->count() >= 1)
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="{{ $registros->previousPageUrl() }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="{{ $registros->url(1) }}">1</a></li>
+                        <li class="page-item"><a class="page-link" href="{{ $registros->url(2) }}">2</a></li>
+                        <li class="page-item"><a class="page-link" href="{{ $registros->url(3) }}">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="{{ $registros->nextPageUrl() }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            @endif
 
         </div>
     </div>

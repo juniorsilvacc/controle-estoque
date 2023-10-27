@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
     // Consultas
+    Route::any('/entradas/search', [ConsultasController::class, 'searchEntrys'])->name('entradas.searchEntrys');
     Route::get('/consultas/entradas', [ConsultasController::class, 'entrysQueries'])->name('consultas.consultas-entradas');
+
+    Route::any('/saidas/search', [ConsultasController::class, 'searchExit'])->name('saidas.searchExit');
     Route::get('/consultas/saidas', [ConsultasController::class, 'exitQueries'])->name('consultas.consultas-saidas');
 
     // Saida de Produtos
@@ -36,6 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
     // Clientes
+    Route::any('/clientes/search', [ClienteController::class, 'search'])->name('clientes.search');
     Route::get('/lista-clientes', [ClienteController::class, 'index'])->name('clientes.lista-clientes');
 
     Route::put('/clientes/{id}', [ClienteController::class, 'editAction'])->name('clientes.editAction');
@@ -49,6 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/detalhes-clientes/{id}', [ClienteController::class, 'details'])->name('clientes.detalhes-clientes');
 
     // Categorias
+    Route::any('/categorias/search', [CategoriaController::class, 'search'])->name('categorias.search');
     Route::get('/lista-categorias', [CategoriaController::class, 'index'])->name('categorias.lista-categorias');
 
     Route::put('/categorias/{id}', [CategoriaController::class, 'editAction'])->name('categorias.editAction');
@@ -65,6 +70,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/produtos/{id}/upload-imagem', [ProdutoController::class, 'uploadAction'])->name('produtos.uploadAction');
     Route::get('/produtos/{id}/imagem', [ProdutoController::class, 'image'])->name('produtos.image');
 
+    Route::any('/produtos/search', [ProdutoController::class, 'search'])->name('produtos.search');
     Route::get('/lista-produtos', [ProdutoController::class, 'index'])->name('produtos.lista-produtos');
 
     Route::put('/produtos/{id}', [ProdutoController::class, 'editAction'])->name('produtos.editAction');
@@ -78,6 +84,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/detalhes-produtos/{id}', [ProdutoController::class, 'details'])->name('produtos.detalhes-produtos');
 
     // Fornecedores
+    Route::any('/fornecedores/search', [FornecedorController::class, 'search'])->name('fornecedores.search');
     Route::get('/lista-fornecedores', [FornecedorController::class, 'index'])->name('fornecedores.lista-fornecedores');
 
     Route::put('/fornecedores/{id}', [FornecedorController::class, 'editAction'])->name('fornecedores.editAction');

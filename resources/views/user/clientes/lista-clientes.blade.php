@@ -16,6 +16,16 @@
         </div>
     </div>
 
+    <form action="{{ route("clientes.search") }}" method="POST">
+        @csrf
+
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input type="text" id="search-input" placeholder="Pesquisar" name="search">
+            <button type="submit">Pesquisar</button>
+        </div>
+    </form>
+
     <div class="container-fluid px-4">
         <div class="row g-3 my-2">
 

@@ -23,9 +23,20 @@ class FornecedorController extends Controller
 
     public function index(Request $request)
     {
-        $fornecedores = $this->service->getAll();
+        $fornecedores = $this->service->getAll($filter = null);
 
         return view('user.fornecedores.lista-fornecedores', compact('fornecedores'));
+    }
+
+    public function search(Request $request)
+    {
+        $filters = $request->all();
+
+        $fornecedores = Fornecedor::where('nome', 'LIKE', "%{$request->search}%")
+            ->orWhere('empresa', 'LIKE', "%{$request->search}%")
+            ->paginate(5);
+
+        return view('user.fornecedores.lista-fornecedores', compact('fornecedores', 'filters'));
     }
 
     public function create()

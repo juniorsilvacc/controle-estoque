@@ -30,9 +30,9 @@ class FornecedorService
         return $fornecedor;
     }
 
-    public function getAll(string $search = null)
+    public function getAll(string $filter = null)
     {
-        $fornecedores = $this->repository->getAll($search);
+        $fornecedores = $this->repository->getAll($filter);
 
         return $fornecedores;
     }

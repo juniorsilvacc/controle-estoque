@@ -28,6 +28,16 @@ class CategoriaController extends Controller
         return view('user.categorias.lista-categorias', compact('categorias'));
     }
 
+    public function search(Request $request)
+    {
+        $filters = $request->all();
+
+        $categorias = Categoria::where('nome', 'LIKE', "%{$request->search}%")
+            ->paginate(5);
+
+        return view('user.categorias.lista-categorias', compact('categorias', 'filters'));
+    }
+
     public function create()
     {
         return view('user.categorias.cadastrar-categorias');

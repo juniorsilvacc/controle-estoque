@@ -39,7 +39,7 @@ class FornecedorRepository implements FornecedorRepositoryInterface
         return $fornecedor;
     }
 
-    public function getAll()
+    public function getAll(string $filter = null)
     {
         $fornecedor = $this->model->paginate(5);
 

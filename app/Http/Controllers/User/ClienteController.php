@@ -28,6 +28,17 @@ class ClienteController extends Controller
         return view('user.clientes.lista-clientes', compact('clientes'));
     }
 
+    public function search(Request $request)
+    {
+        $filters = $request->all();
+
+        $clientes = Cliente::where('nome', 'LIKE', "%{$request->search}%")
+            ->orWhere('email', 'LIKE', "%{$request->search}%")
+            ->paginate(5);
+
+        return view('user.clientes.lista-clientes', compact('clientes', 'filters'));
+    }
+
     public function create()
     {
         return view('user.clientes.cadastrar-clientes');

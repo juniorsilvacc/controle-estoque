@@ -11,7 +11,7 @@ interface FornecedorRepositoryInterface
 
     public function findById(string $id);
 
-    public function getAll();
+    public function getAll(string $filter = null);
 
     public function create(CreateFornecedorDTO $dto);
 

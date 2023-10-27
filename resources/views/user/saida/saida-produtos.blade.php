@@ -11,6 +11,7 @@
             <form class="row g-3 my-2" action="{{ route('saida.exitAction') }}" method="POST">
 
                 @include('components.includes.message')
+                @include('components.includes.message-error')
 
                 @include('user.saida.partials.forms')
 

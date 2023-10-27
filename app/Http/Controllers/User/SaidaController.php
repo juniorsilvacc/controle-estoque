@@ -43,6 +43,12 @@ class SaidaController extends Controller
         $produto = $this->produtoservice->findById($request->produto_id);
         $estoque_atual = $produto->estoque;
 
+        if ($estoque_atual == 0) {
+            return redirect()
+                ->route('saida.saida-produtos')
+                ->with('error', 'Não existe mais produto nesse estoque');
+        }
+
         // Pegar a quantidade de produtos que o usuário está passando
         $quantidade_saida = $request->quantidade;
 
