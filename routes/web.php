@@ -8,10 +8,15 @@ use App\Http\Controllers\User\FornecedorController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\PerfilController;
 use App\Http\Controllers\User\ProdutoController;
+use App\Http\Controllers\User\RelatorioController;
 use App\Http\Controllers\User\SaidaController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
+    // Relatorios
+    Route::get('/gerar-pdf-entrada', [RelatorioController::class, 'generatePDFInput'])->name('entrada.gerar-pdf');
+    Route::get('/gerar-pdf-saida', [RelatorioController::class, 'generatePDFOutput'])->name('saida.gerar-pdf');
+
     // Consultas
     Route::any('/entradas/search', [ConsultasController::class, 'searchEntrys'])->name('entradas.searchEntrys');
     Route::get('/consultas/entradas', [ConsultasController::class, 'entrysQueries'])->name('consultas.consultas-entradas');

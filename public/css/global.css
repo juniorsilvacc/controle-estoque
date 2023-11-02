@@ -154,6 +154,30 @@ td {
     border-radius: 3px;
 }
 
+/* Button Download Relations */
+.download-button {
+    display: inline-block;
+    padding: 5px 18px;
+    background-color: #12BE48;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    text-decoration: none;
+    transition: 100ms ease-in-out;
+    margin: 5px 0px 0px 16px;
+}
+
+.download-button:hover {
+    background-color: #10aa41;
+    color: #fff;
+}
+
+.download-button i {
+    margin-right: 5px;
+}
+
+
 @keyframes fadeInUp {
     0% {
         opacity: 0;

@@ -52,6 +52,10 @@
         </div>
     </div>
 
+    <a href="{{ route('entrada.gerar-pdf') }}" class="download-button">
+        <i class="fas fa-download"></i> Gerar Relatório
+    </a>
+
     <div class="container-fluid px-4">
         <div class="row g-3 my-2">
             <table class="table table-striped table-hover w-100 text-center">
