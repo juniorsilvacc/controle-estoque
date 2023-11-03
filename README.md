@@ -60,6 +60,10 @@ Desenvolvido com as seguintes tecnologias:
 
 - Autenticação
     - Autenticação de usuário
+
+# Vídeo
+
+![ezgif com-video-to-gif (1)](https://github.com/juniorsilvacc/logistics-api/assets/43589505/93c75f99-69b3-4772-9177-da2ffb2a2c4e)
     
 # Diagrama Entidade e Relacionamento
 
